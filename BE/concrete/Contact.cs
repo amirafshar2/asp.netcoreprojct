@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace BE.concrete
 {
-    public class Category
+    public class Contact
     {
         [Key]
         public int id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string UserName { get; set; }
+        public string Mail { get; set; }
+        public string Subject { get; set; }
+        public string Message { get; set; }
+        public DateTime Date { get; set; }
         public bool Status { get; set; }
 
     }

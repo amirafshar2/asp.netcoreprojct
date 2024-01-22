@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace BE.concrete
 {
-    public class Category
+    public class Comment
     {
         [Key]
         public int id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string UserName   { get; set; }
+        public string Title { get; set; }
+        public string Content {  get; set; }
+        public DateTime Date { get; set; }
         public bool Status { get; set; }
 
     }
