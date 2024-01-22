@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Crud\" />
+    <Folder Include="ConCreate\" />
   </ItemGroup>
 
 </Project>
