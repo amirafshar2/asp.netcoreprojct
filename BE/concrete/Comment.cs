@@ -16,6 +16,8 @@ namespace BE.concrete
         public string Content {  get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
+        public int Blogid { get; set; }
+        public Blog Blog { get; set; }
 
     }
 }

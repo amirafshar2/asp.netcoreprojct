@@ -17,6 +17,9 @@ namespace BE.concrete
         public string İmage {  get; set; }
         public DateTime CreateDate { get; set; }
         public bool Status { get; set; }
+        public int Categoryid { get; set; }
+        public Category Category { get; set; }
+        public List<Comment> Comments { get; set; }
 
     }   
 }
