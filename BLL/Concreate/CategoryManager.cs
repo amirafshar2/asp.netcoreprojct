@@ -12,31 +12,32 @@ namespace BLL.Concreate
 {
     public class CategoryManager : ICategoryService
     {
-        EfCategoryRepository efcr;
-        public CategoryManager()
+        ICategoryDAL _categoryDal;
+        public CategoryManager(ICategoryDAL categoryDal)
         {
-            efcr = new EfCategoryRepository();
+            _categoryDal = categoryDal;
         }
+
         public void İnsert(Category category)
         {
-            efcr.İnsert(category);
+            _categoryDal.İnsert(category);
         }
        
         public void Delete(Category category)
         {
-            efcr.Delete(category);
+            _categoryDal.Delete(category);
         }
         public void Update(Category category)
         {
-            efcr.Update(category);
+            _categoryDal.Update(category);
         }
         public List<Category> GetAll()
         {
-           return efcr.GetAll();
+           return _categoryDal.GetAll();
         }
         public Category GetById(int id)
         {
-            return efcr.GetById(id);
+            return _categoryDal.GetById(id);
         }
     }
 }
