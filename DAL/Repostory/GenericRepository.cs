@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repostory
 {
-    public class CommentRepository<T> : IGenericDAL<T> where T : class
+    public class GenericRepository<T> : IGenericDAL<T> where T : class
     {
         public void Delete(T t)
         {
