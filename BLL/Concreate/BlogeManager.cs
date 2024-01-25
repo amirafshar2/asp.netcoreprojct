@@ -28,9 +28,19 @@ namespace BLL.Concreate
 			return _ıBLogDal.GetAll();
 		}
 
+		public List<Blog> GetAll(int id)
+		{
+			return _ıBLogDal.GetAll(x => x.id == id);
+		}
+
+		public List<Blog> GetBlogsFromCategory()
+		{
+			return _ıBLogDal.GetBlogsFromCategory();
+		}
+
 		public Blog GetById(int id)
 		{
-			throw new NotImplementedException();
+			return _ıBLogDal.GetById(id);
 		}
 
 		public void Update(Blog t)
@@ -42,5 +52,7 @@ namespace BLL.Concreate
 		{
 			throw new NotImplementedException();
 		}
+
+	
 	}
 }

@@ -3,6 +3,7 @@ using DAL.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +25,13 @@ namespace DAL.Repostory
 
         }
 
-        public T GetById(int id)
+		public List<T> GetAll(Expression<Func<T, bool>> filtre)
+		{
+            using var c = new DB();
+            return c.Set<T>().Where(filtre).ToList();
+		}
+
+		public T GetById(int id)
         {
             using var a = new DB();
             return a.Set<T>().Find(id);

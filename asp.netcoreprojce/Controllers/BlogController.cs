@@ -9,8 +9,14 @@ namespace asp.netcoreprojce.Controllers
         BlogeManager bl = new BlogeManager(new EfBlogRepository());
         public IActionResult Index()
         {
-            var values = bl.GetAll();
+            var values = bl.GetBlogsFromCategory();
             return View(values);
         }
-    }
+        public IActionResult BlogReadAll(int id)
+        {
+            var value = bl.GetAll(id);
+            return View(value);
+        }
+
+	}
 }

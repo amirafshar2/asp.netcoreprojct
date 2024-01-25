@@ -14,5 +14,7 @@ namespace BLL.Abstract
 		void Update(Blog t);
 		List<Blog> GetAll();
 		Blog GetById(int id);
+		List<Blog> GetBlogsFromCategory();
+		List<Blog> GetAll(int id);
 	}
 }
