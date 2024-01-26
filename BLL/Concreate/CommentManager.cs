@@ -20,7 +20,7 @@ namespace BLL.Concreate
 
 		public List<Comment> GetAll(int id)
 		{
-			return _ıCommentDal.GetAll(i=>i.id == id).ToList();
+			return _ıCommentDal.GetAll(i=>i.Blogid == id).ToList();
 		}
 
 		public void İnsert(Comment t)
