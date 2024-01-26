@@ -11,16 +11,16 @@ namespace BLL.Concreate
 {
     public class WriterManager : IWriterService
     {
-        IWriterDAL dal;
+        IWriterDAL _writerDAL;
 
-        public WriterManager(IWriterDAL dal)
-        {
-            this.dal = dal;
-        }
+		public WriterManager(IWriterDAL writerDAL)
+		{
+			_writerDAL = writerDAL;
+		}
 
-        public void İnsert(Writer t)
+		public void İnsert(Writer t)
         {
-            dal.İnsert(t);
+            _writerDAL.İnsert(t);
         }
     }
 }
