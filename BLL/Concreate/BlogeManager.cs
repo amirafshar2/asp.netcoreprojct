@@ -1,6 +1,7 @@
 ﻿using BE.concrete;
 using BLL.Abstract;
 using DAL.Abstract;
+using DAL.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,12 @@ namespace BLL.Concreate
 		public List<Blog> GetAll(int id)
 		{
 			return _ıBLogDal.GetAll(x => x.id == id);
+		}
+
+		public List<Blog> GetBlogByWriter(int id)
+		{
+			
+			return _ıBLogDal.GetAll(i=> i.Writerid == id);
 		}
 
 		public List<Blog> GetBlogsFromCategory()

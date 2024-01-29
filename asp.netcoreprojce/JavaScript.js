@@ -1,60 +1,90 @@
 ﻿
 
 
-
-
 $(document).ready(function () {
-
-    $("#btn1").click(function () {
-
-        swal("Sitemizde Verdiğiniz mail Adresi üzerinde bilgi ve haber e-postaları spam ölçülerini aşmayacak şekilde alacaksınız . ");
-    });
-
-    function Writer() {
-        this.Name = "AS";
-        this.About = "AS";
-        this.Mail = "AS";
-        this.Password = "aA1";
-        this.Status = true;
-    };
-
-    $("#SaveBtn").click(function () {
-        if ($("#password1").val() == $("#password2").val()) {
-
-            var i = new Writer()
-            {
-                i.Name = $("#validationDefault01").val();
-                i.About = "deneme";
-                i.Mail = $("#validationDefault02").val();
-                i.Password = $("#password1").val();
-                i.Status = true;
-            };
-            Create(i);
-
+    function Comment() {
+        this.UserName = "aa";
+        this.Mail = "aa";
+        this.Title = "aa";
+        this.Content = "aa";
+    }
+    $("#savebtn").click(function () {
+        var c = new Comment()
+        {
+            UserName = $("#nametxt").val();
+            Mail = $("#emailtxt").val();
+            Title = $("#titletxt").val();
+            Content = $("#messagetxt").val();
         }
-        else {
-            swal("Şifreler uyumlu değil Lütfen tekrar deneyın");
-        }
-    });
-
-
-    function Create(a) {
         $.ajax({
-            url: '/Register/Index',
+            url: '/Comment/PartialAddComment',
             type: 'POST',
-            data: { Name: a.Name, About: a.About, Mail: a.Mail, Password: a.Password, Status: a.Status },
+            data: { UserName : c.UserName , Mail : c.Mail , Title : c.Title, Content : c.Content },
             beforeSend: function (xhr) {
 
-                swal('İstek gönderiliyor...');
+                console.log('İstek gönderiliyor...');
 
             },
             success: function (data) {
                 swal("Kayıt Başarılı");
             },
             error: function (error) {
-                swal('İstek başarısız oldu: ', error);
+
+                console.log('İstek başarısız oldu: ', error);
             }
         });
-    };
- 
+
+    });
+
 });
+
+
+
+//$(document).ready(function () {
+//    function Writer() {
+//        this.Name = "AS";
+//        this.About = "AS";
+//        this.Mail = "AS";
+//        this.Password = "aA1";
+//        this.Status = true;
+//    };
+   
+//    $("#SaveBtn").click(function () {
+//        if ($("#password1").val() == $("#password2").val()) {
+
+//            var i = new Writer()
+//            {
+//                i.Name = $("#validationDefault01").val();
+//                i.About = $("#validationDefault03").val();
+//                i.Mail = $("#validationDefault02").val();
+//                i.Password = $("#password1").val();
+//                i.Status = true;
+//            };
+//            Create(i);
+
+//        }
+//        else {
+//            swal("Şifreler uyumlu değil Lütfen tekrar deneyın");
+//        }
+       
+//    });
+//    function Create(a) {
+//        $.ajax({
+//            url: '/Register/Index.cshtml',
+//            type: 'POST',
+//            data: { Name: a.Name, About: a.About, Mail: a.Mail, Password: a.Password, Status: a.Status },
+//            beforeSend: function (xhr) {
+
+//                console.log('İstek gönderiliyor...');
+
+//            },
+//            success: function (data) {
+//                swal("Kayıt Başarılı");
+//            },
+//            error: function (error) {
+
+//                console.log('İstek başarısız oldu: ', error);
+//            }
+//        });
+//    };
+//});

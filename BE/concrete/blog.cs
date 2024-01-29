@@ -20,6 +20,9 @@ namespace BE.concrete
         public int Categoryid { get; set; }
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
+        
+        public int Writerid { get; set; }
+        public Writer Writer { get; set; }
 
     }   
 }

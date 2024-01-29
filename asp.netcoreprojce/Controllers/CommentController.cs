@@ -1,4 +1,5 @@
-﻿using BLL.Concreate;
+﻿using BE.concrete;
+using BLL.Concreate;
 using DAL.EntityFrameWork;
 using DAL.Repostory;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,21 @@ namespace asp.netcoreprojce.Controllers
 		{
 			return View();
 		}
+		[HttpGet]
 		public PartialViewResult PartialAddComment()
 		{
 			return PartialView();
 		}
-		public PartialViewResult CommentListBayBlog()
+        [HttpPost]
+        public PartialViewResult PartialAddComment(Comment c)
+        {
+			c.Date = DateTime.Now;
+			c.Status = true;
+			
+			cm.İnsert(c);
+			return PartialView();
+        }
+        public PartialViewResult CommentListBayBlog()
 		{
 			return PartialView();
 		}

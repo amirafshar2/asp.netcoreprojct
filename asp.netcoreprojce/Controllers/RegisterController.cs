@@ -6,8 +6,12 @@
 
 using BE.concrete;
 using BLL.Concreate;
+using BLL.ValidationRules;
 using DAL.EntityFrameWork;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+
 
 namespace asp.netcoreprojce.Controllers
 {
@@ -22,11 +26,21 @@ namespace asp.netcoreprojce.Controllers
 		[HttpPost]
 		public IActionResult Index(Writer w)
 		{
-			w.About = "deneme test";
-			w.Status = true;
-			
-			r.İnsert(w);
-			return RedirectToAction("Index","Blog");
+			WriterValidator vw = new WriterValidator();
+			ValidationResult result = vw.Validate(w);
+			if (result.IsValid)
+			{
+				r.İnsert(w);
+				return RedirectToAction("Index", "Blog");
+			}
+			else
+			{
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+				}
+			}
+			return View();
 		}
 	}
 }

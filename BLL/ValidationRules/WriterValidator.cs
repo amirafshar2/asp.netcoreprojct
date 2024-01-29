@@ -12,16 +12,15 @@ namespace BLL.ValidationRules
 	{
 		public WriterValidator()
 		{
-			//RuleFor(i => i.Name).NotEmpty().WithMessage("Yazar adı boş geçilemez").MinimumLength(2)
-			//	.WithMessage("Lütfen en az 2 karakter girişi yapın")
-			//	.MaximumLength(50).WithMessage("Lütfen en fazla 50 karakterlik veri girişi yapın");
-			//RuleFor(i => i.Mail).NotEmpty().WithMessage("Mail adı boş geçilemez");
-			//RuleFor(i => i.Password)
-			//.NotEmpty().WithMessage("Şifre alanı boş geçilemez")
-			//.Must(password => password != null && password.Any(char.IsDigit) && password.Any(char.IsLower) && password.Any(char.IsUpper))
-			//.WithMessage("Şifre en az bir küçük harf, bir büyük harf ve bir rakam içermelidir");
-			
+			RuleFor(i => i.Name).NotEmpty().WithMessage("Yazar adı boş geçilemez");
+			RuleFor(i => i.Name).MinimumLength(2).WithMessage("Lütfen en az 2 karakter girişi yapın");
+            RuleFor(i => i.Name).MaximumLength(50).WithMessage("Lütfen en fazla 50 karakterlik veri girişi yapın");
+			RuleFor(i => i.Mail).NotEmpty().WithMessage("Mail adı boş geçilemez");
+			RuleFor(i => i.Password).NotEmpty().WithMessage("Şifre alanı boş geçilemez");
+            RuleFor(i => i.Password).Must(password => password != null && password.Any(char.IsDigit) && password.Any(char.IsLower) && password.Any(char.IsUpper))
+			.WithMessage("Şifre en az bir küçük harf, bir büyük harf ve bir rakam içermelidir");
+
 		}
-		
+
 	}
 }

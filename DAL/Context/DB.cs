@@ -21,7 +21,7 @@ namespace DAL.Context
         public DbSet<Comment> comments { get; set; }
         public DbSet<Contact> contacts { get; set; }
         public DbSet<Writer> writers { get; set; }
-
+        public DbSet<NewsLatter> newsLatters { get; set; }
 
         public void Dispose()
         {
