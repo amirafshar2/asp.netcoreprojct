@@ -10,56 +10,83 @@ using System.Threading.Tasks;
 
 namespace BLL.Concreate
 {
-	public class BlogeManager : IBlogeService
-	{
-		IBlogDAL _ıBLogDal;
+    public class BlogeManager : IBlogeService
+    {
+        IBlogDAL _ıBLogDal;
 
-		public BlogeManager(IBlogDAL ıBLogDal)
-		{
-			_ıBLogDal = ıBLogDal;
-		}
+        public BlogeManager(IBlogDAL ıBLogDal)
+        {
+            _ıBLogDal = ıBLogDal;
+        }
 
-		public void Delete(Blog t)
-		{
-			throw new NotImplementedException();
-		}
+        public void Delete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
 
-		public List<Blog> GetAll()
-		{
-			return _ıBLogDal.GetAll();
-		}
+        public List<Blog> GetAll()
+        {
+            return _ıBLogDal.GetAll();
+        }
 
-		public List<Blog> GetAll(int id)
-		{
-			return _ıBLogDal.GetAll(x => x.id == id);
-		}
+        public List<Blog> GetAll(int id)
+        {
+            return _ıBLogDal.GetAll(x => x.id == id);
+        }
 
-		public List<Blog> GetBlogByWriter(int id)
-		{
-			
-			return _ıBLogDal.GetAll(i=> i.Writerid == id);
-		}
+        public List<Blog> GetBlogByWriter(int id)
+        {
 
-		public List<Blog> GetBlogsFromCategory()
-		{
-			return _ıBLogDal.GetBlogsFromCategory();
-		}
+            //return _ıBLogDal.GetAll(i => i.Writerid == id);
+            List<Blog> q = new List<Blog>();
+            int a = 0;
+            foreach (var item in _ıBLogDal.GetAll(i => i.Writerid == id))
+            {
+                if (a <= 2)
+                {
+                    q.Add(item);
+                    a++;
+                }
+            }
+            return q;
+        }
 
-		public Blog GetById(int id)
-		{
-			return _ıBLogDal.GetById(id);
-		}
+        public List<Blog> GetBlogsFromCategory()
+        {
+            return _ıBLogDal.GetBlogsFromCategory();
+        }
 
-		public void Update(Blog t)
-		{
-			throw new NotImplementedException();
-		}
+        public Blog GetById(int id)
+        {
+            return _ıBLogDal.GetById(id);
+        }
 
-		public void İnsert(Blog t)
-		{
-			throw new NotImplementedException();
-		}
+        public List<Blog> GetLast3Blogs()
+        {
+            List<Blog> q = new List<Blog>();
+            int a = 0;
+            foreach (var item in _ıBLogDal.GetAll())
+            {
+                if (a <=2)
+                {
+                    q.Add(item);
+                    a++;
+                }
+                
+            }
+            return q;
+        }
 
-	
-	}
+        public void Update(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void İnsert(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+
+    }
 }

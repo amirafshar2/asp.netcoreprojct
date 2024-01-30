@@ -30,7 +30,7 @@
 						<div class="b-grid-top">
 							<div class="blog_info_left_grid">
 								<a href="single.html">
-									<img src="~/CoreTema/images/b1.jpg" class="img-fluid" alt="">
+									<img src="@item.İmage" class="img-fluid" alt="">
 								</a>
 							</div>
 							<div class="blog-info-middle">
@@ -78,6 +78,7 @@
 						@* <div class="tech-btm">
 							<img src="~/CoreTema/images/banner1.jpg" class="img-fluid" alt="">
 						</div> *@
+						<h5>Haber bültenimize Abone Olun</h5>
 						@await Html.PartialAsync("~/Views/NewsLatter/Index.cshtml")
 
 						@await Component.InvokeAsync("CategoryList")

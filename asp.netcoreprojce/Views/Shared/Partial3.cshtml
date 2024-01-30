@@ -1,16 +1,31 @@
-﻿<footer>
+﻿
+
+
+
+
+
+
+
+
+<footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4 footer-grid-agileits-w3ls text-left">
 				<h3>Hakkımızda</h3>
-				<p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. lacinia eget consectetur sed, convallis at tellus..</p>
+				<p>
+					Merhaba, değerli ziyaretçilerimiz!
+
+					Biz [Sitename], sadece bir internet sitesi değil, aynı zamanda tutkularımızı ve bilgi birikimimizi paylaştığımız bir dijital alanız. [Sitename] olarak, sizlere en kaliteli içerikleri sunmayı ve sizi bilgilendirmeyi, eğlendirmeyi amaçlıyoruz.
+
+					Şirketimiz [Sitename], [yıl] yılında kuruldu ve o günden beri büyümeye ve gelişmeye devam ediyor..
+				</p>
 				<div class="Devamını Oku">
-					<a href="single.html" class="btn btn-primary read-m">Read More</a>
+					<a href="/About/Index/" class="btn btn-primary read-m">Devamını Oku</a>
 				</div>
 			</div>
 			<div class="col-lg-4 footer-grid-agileits-w3ls text-left">
-
-				<div class="tech-btm">
+				@await Component.InvokeAsync("ListAllBlog")
+				@* <div class="tech-btm">
 					<h3>Son Gönderiler</h3>
 					<div class="blog-grids row mb-3">
 						<div class="col-md-5 blog-grid-left">
@@ -69,21 +84,13 @@
 						</div>
 
 					</div>
-				</div>
+				</div> *@
 			</div>
 			<!-- subscribe -->
 			<div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
-				<h2>Signup to our newsletter</h2>
-				<div class="subscribe-main text-left">
-					<div class="subscribe-form">
-						<form action="#" method="post" class="subscribe_form">
-							<input class="form-control" type="email" placeholder="Enter your email..." required="">
-							<button type="submit" class="btn btn-primary submit">Submit</button>
-						</form>
-						<div class="clearfix"> </div>
-					</div>
-					<p>We respect your privacy.No spam ever!</p>
-				</div>
+				<div style="color : white"><h5>Haber bültenimize Abone Olun</h5></div>
+				
+				@await Html.PartialAsync("~/Views/NewsLatter/Index.cshtml")
 				<!-- //subscribe -->
 			</div>
 		</div>
@@ -122,7 +129,7 @@
 			</div>
 			<div class="w3layouts-agile-copyrightbottom">
 				<p>
-                    @DateTime.Now.Year  Weblog. All Rights Reserved | Design by
+                    @DateTime.Now.Year .net core 6.0 , Tüm hakklar saklıdır | Design by
 					<a href="http://w3layouts.com/">W3layouts</a>
 				</p>
 
