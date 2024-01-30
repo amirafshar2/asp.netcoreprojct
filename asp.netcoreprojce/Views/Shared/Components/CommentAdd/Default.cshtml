@@ -26,22 +26,22 @@
     $(document).ready(function () {
         function Comment() {
             this.UserName = "aa";
-            this.Mail = "aa";
+            this.Emil = "aa";
             this.Title = "aa";
             this.Content = "aa";
         }
         $("#savebtn").click(function () {
             var c = new Comment()
             {
-                UserName = $("#nametxt").val();
-                Mail = $("#emailtxt").val();
-                Title = $("#titletxt").val();
-                Content = $("#messagetxt").val();
+                c.UserName = $("#nametxt").val();
+                c.Emil = $("#emailtxt").val();
+                c.Title = $("#titletxt").val();
+                c.Content = $("#messagetxt").val();
             }
             $.ajax({
                 url: '/Comment/PartialAddComment',
                 type: 'POST',
-                data: { UserName: c.UserName, Mail: c.Mail, Title: c.Title, Content: c.Content },
+                data: { UserName: c.UserName, Emil: c.Emil, Title: c.Title, Content: c.Content },
                 beforeSend: function (xhr) {
 
                     console.log('İstek gönderiliyor...');

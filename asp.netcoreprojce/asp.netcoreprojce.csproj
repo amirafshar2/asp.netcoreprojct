@@ -30,4 +30,8 @@
     <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Core404Page-main\" />
+  </ItemGroup>
+
 </Project>

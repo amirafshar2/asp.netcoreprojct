@@ -23,8 +23,9 @@ namespace asp.netcoreprojce.Controllers
         {
 			c.Date = DateTime.Now;
 			c.Status = true;
-			
+			c.Blogid = 7;
 			cm.İnsert(c);
+			
 			return PartialView();
         }
         public PartialViewResult CommentListBayBlog()
