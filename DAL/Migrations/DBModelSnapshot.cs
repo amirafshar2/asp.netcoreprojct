@@ -24,8 +24,11 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("BE.concrete.About", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("Detaila2")
                         .IsRequired()
@@ -39,11 +42,12 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<int>("id")
-                        .HasColumnType("int");
 
                     b.Property<string>("İmage1")
                         .IsRequired()
@@ -53,7 +57,7 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Name");
+                    b.HasKey("id");
 
                     b.ToTable("abouts");
                 });
