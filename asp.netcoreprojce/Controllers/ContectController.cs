@@ -1,6 +1,7 @@
 ﻿using BE.concrete;
 using BLL.Concreate;
 using DAL.EntityFrameWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace asp.netcoreprojce.Controllers
@@ -9,11 +10,13 @@ namespace asp.netcoreprojce.Controllers
 	{
 		ContectManager c = new ContectManager(new EfContactRepository());
 		[HttpGet]
+		[AllowAnonymous]
 		public IActionResult Index()
 		{
 			return View();
 		}
 		[HttpPost]
+		[AllowAnonymous]
 		public IActionResult Index(Contact cc)
 		{
 			cc.Date = DateTime.Now;

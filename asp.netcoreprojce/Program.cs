@@ -1,5 +1,33 @@
+
+
+
+
+
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews(options =>
+{
+	var policy = new AuthorizationPolicyBuilder()
+		.RequireAuthenticatedUser()
+		.Build();
+	options.Filters.Add(new AuthorizeFilter(policy));
+});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(options =>
+	{
+		options.LoginPath = "/Login/Index";
+		// Diðer cookie ayarlarý da eklenebilir
+	});
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromMinutes(30); // Session zaman aþýmý
+													// Diðer session ayarlarý da eklenebilir
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -15,8 +43,11 @@ if (!app.Environment.IsDevelopment())
 app.UseStatusCodePagesWithReExecute("/Errorpage/error1","?code={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
 
 app.UseRouting();
+
+
 
 app.UseAuthorization();
 

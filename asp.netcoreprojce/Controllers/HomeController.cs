@@ -1,4 +1,5 @@
 ﻿using asp.netcoreprojce.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -12,8 +13,8 @@ namespace asp.netcoreprojce.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+		[AllowAnonymous]
+		public IActionResult Index()
         {
             return RedirectToAction("Index","Blog");
         }
