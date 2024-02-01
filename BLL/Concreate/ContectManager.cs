@@ -42,7 +42,7 @@ namespace BLL.Concreate
 
         public void İnsert(Contact t)
         {
-             _ıContectDal.İnsert(c)
+            _ıContectDal.İnsert(t);
         }
     }
 }

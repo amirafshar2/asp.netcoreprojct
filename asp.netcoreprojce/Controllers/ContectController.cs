@@ -21,7 +21,7 @@ namespace asp.netcoreprojce.Controllers
 		{
 			cc.Date = DateTime.Now;
 			cc.Status = true;
-			c.Create(cc);
+			c.İnsert(cc);
 			return RedirectToAction("Index","Blog");
 		}
 	}

@@ -20,7 +20,7 @@ namespace asp.netcoreprojce.Controllers
 		public PartialViewResult Index(NewsLatter n)
 		{
 			n.Status = true;
-			nl.AddNewsLatter(n);
+			nl.İnsert(n);
 			return PartialView();
 		}
 	}
