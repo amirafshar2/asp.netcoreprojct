@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-	public interface ICommentServis
+	public interface ICommentServis: IGenericService<Comment>
 	{
-		void İnsert(Comment t);
-		//void Delete(Comment t);
-		//void Update(Comment t);
+	
 		List<Comment> GetAll(int id);
-		//Comment GetById(int id);
+	
 	}
 }

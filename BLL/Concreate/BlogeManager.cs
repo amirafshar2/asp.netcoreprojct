@@ -36,8 +36,6 @@ namespace BLL.Concreate
 
         public List<Blog> GetBlogByWriter(int id)
         {
-
-            //return _ıBLogDal.GetAll(i => i.Writerid == id);
             List<Blog> q = new List<Blog>();
             int a = 0;
             foreach (var item in _ıBLogDal.GetAll(i => i.Writerid == id))
@@ -86,7 +84,5 @@ namespace BLL.Concreate
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

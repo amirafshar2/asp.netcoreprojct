@@ -18,9 +18,31 @@ namespace BLL.Concreate
 			_ıContectDal = ıContectDal;
 		}
 
-		public void Create(Contact c)
-		{
-			_ıContectDal.İnsert(c);
-		}
-	}
+	
+
+        public void Delete(Contact t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Contact> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Contact GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Contact t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void İnsert(Contact t)
+        {
+             _ıContectDal.İnsert(c)
+        }
+    }
 }

@@ -10,5 +10,9 @@ namespace asp.netcoreprojce.Controllers
         {
             return View();
         }
+        public PartialViewResult WriterSideBar()
+        {
+            return PartialView();
+        }
     }
 }

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-    public interface ICategoryService 
+    public interface ICategoryService : IGenericService<Category>
     {
-        void İnsert(Category t);
-        void Delete(Category t);
-        void Update(Category t);
-        List<Category> GetAll();
-        Category GetById(int id);
+        //void İnsert(Category t);
+        //void Delete(Category t);
+        //void Update(Category t);
+        //List<Category> GetAll();
+        //Category GetById(int id);
     }
 }

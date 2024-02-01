@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-	public interface INewsLatterService
+	public interface INewsLatterService : IGenericService<NewsLatter>
 	{
-		void AddNewsLatter(NewsLatter n);
+		
 	}
 }

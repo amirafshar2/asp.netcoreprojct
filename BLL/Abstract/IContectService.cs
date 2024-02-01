@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-	internal interface IContectService
+	internal interface IContectService : IGenericService<Contact>
 	{
-		public void Create(Contact c);
+		
 	}
 }

@@ -18,7 +18,27 @@ namespace BLL.Concreate
 			_writerDAL = writerDAL;
 		}
 
-		public void İnsert(Writer t)
+        public void Delete(Writer t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Writer> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Writer GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Writer t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void İnsert(Writer t)
         {
             _writerDAL.İnsert(t);
         }

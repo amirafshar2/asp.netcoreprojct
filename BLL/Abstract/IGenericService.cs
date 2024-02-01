@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-    public interface IWriterService : IGenericService<Writer>
+    public  interface IGenericService<T>
     {
-       
+        void İnsert(T t);
+        void Delete(T t);
+        void Update(T t);
+        List<T> GetAll();
+        T GetById(int id);
     }
 }

@@ -18,9 +18,29 @@ namespace BLL.Concreate
             _ıAboutDal = ıAboutDal;
         }
 
+        public void Delete(About t)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<About> GetAll()
         {
             return _ıAboutDal.GetAll();
+        }
+
+        public About GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void İnsert(About t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

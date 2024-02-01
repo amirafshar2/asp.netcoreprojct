@@ -18,9 +18,31 @@ namespace BLL.Concreate
 			_ıNewsdal = ıNewsdal;
 		}
 
-		public void AddNewsLatter(NewsLatter n)
-		{
-			_ıNewsdal.İnsert(n);
-		}
-	}
+		
+
+        public void Delete(NewsLatter t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<NewsLatter> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public NewsLatter GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(NewsLatter t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void İnsert(NewsLatter t)
+        {
+            _ıNewsdal.İnsert(t);
+        }
+    }
 }

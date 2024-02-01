@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-    public  interface IAboutService 
+    public  interface IAboutService :IGenericService<About>
     {
-        public List<About> GetAll();
+       
     }
 }

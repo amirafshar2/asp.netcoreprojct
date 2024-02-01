@@ -18,12 +18,32 @@ namespace BLL.Concreate
 			_ıCommentDal = ıCommentDal;
 		}
 
-		public List<Comment> GetAll(int id)
+        public void Delete(Comment t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Comment> GetAll(int id)
 		{
 			return _ıCommentDal.GetAll(i=>i.Blogid == id).ToList();
 		}
 
-		public void İnsert(Comment t)
+        public List<Comment> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Comment GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Comment t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void İnsert(Comment t)
 		{
 			_ıCommentDal.İnsert(t);
 		}
