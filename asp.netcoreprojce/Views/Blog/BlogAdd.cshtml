@@ -1,0 +1,34 @@
+﻿@model BE.concrete.Blog
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+<h2>Yeni Blog Girişi</h2>
+<br/>
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(i=>i.Title,new{@class="form-control"})
+    @Html.ValidationMessageFor(i=>i.Title)
+    <br />
+    @Html.Label("Blog Görseli")
+    @Html.TextBoxFor(i=>i.İmage,new{@class="form-control"})
+    @Html.ValidationMessageFor(i=>i.İmage)
+    <br />
+    @Html.Label("Blog Küçük Görssel")
+    @Html.TextBoxFor(i=>i.TompNailİmage,new{@class="form-control"})
+    @Html.ValidationMessageFor(i=>i.TompNailİmage)
+    <br />
+    @Html.Label("Blog Kategory")
+    @Html.TextBoxFor(i=>i.Category,new{@class="form-control"})
+    @Html.ValidationMessageFor(i=>i.Category)
+    <br />
+    @Html.Label("Blog İçeriği")
+    @Html.TextAreaFor(i=>i.Content,15,3,new{@class="form-control"})
+    @Html.ValidationMessageFor(i=>i.Content)
+    <br />
+    <button class="btn btn-info">Bloğu Kayıt Et</button>
+}

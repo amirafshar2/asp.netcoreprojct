@@ -82,7 +82,7 @@ namespace BLL.Concreate
 
         public void İnsert(Blog t)
         {
-            throw new NotImplementedException();
+            _ıBLogDal.İnsert(t);
         }
     }
 }

@@ -14,5 +14,6 @@ namespace asp.netcoreprojce.Controllers
         {
             return PartialView();
         }
+
     }
 }
