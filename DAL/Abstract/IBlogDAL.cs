@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Abstract
 {
-    public interface IBlogDAL :IGenericDAL<Blog>
+    public interface IBlogDAL : IGenericDAL<Blog>
     {
         List<Blog> GetBlogsFromCategory();
+        public List<Blog> GetBlogsByCategoryWithWriter(int id);
     }
 }

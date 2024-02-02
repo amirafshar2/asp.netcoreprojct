@@ -9,7 +9,9 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 @model IEnumerable<BE.concrete.Blog>
 
@@ -39,10 +41,10 @@
                 <tr>
 
                     <th>@item.id</th>
-                    <td>@item.Categoryid</td>
+                    <td>@item.Category.Name</td>
                     <td>@item.Title</td>
-                    <td>@item.Status</td>
-                    <td>@item.CreateDate</td>
+                    <td><button href="#" class="btn" id="Statusbtn">@item.Status</button></td>                   
+                    <td>@item.CreateDate.ToString("dd,MMM.yyyy")</td>
                     <td><a href="#" class="btn btn-danger"><i class="mdi mdi-delete menu-icon"></i>Sil</a></td>
                     <td><a href="#" class="btn btn-warning"><i class="mdi mdi-flattr menu-icon"></i>Düzenle</a></td>
                 </tr>

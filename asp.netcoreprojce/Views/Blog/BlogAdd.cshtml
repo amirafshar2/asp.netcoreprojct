@@ -6,7 +6,7 @@
 
 
 <h2>Yeni Blog Girişi</h2>
-<br/>
+<br />
 
 @using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
 {
@@ -23,8 +23,8 @@
     @Html.ValidationMessageFor(i=>i.TompNailİmage)
     <br />
     @Html.Label("Blog Kategory")
-    @Html.TextBoxFor(i=>i.Category,new{@class="form-control"})
-    @Html.ValidationMessageFor(i=>i.Category)
+    @Html.DropDownListFor(i=>i.Categoryid,(List<SelectListItem>)ViewBag.cv,new{@class="form-control"})
+    @Html.ValidationMessageFor(i=>i.Categoryid)
     <br />
     @Html.Label("Blog İçeriği")
     @Html.TextAreaFor(i=>i.Content,15,3,new{@class="form-control"})

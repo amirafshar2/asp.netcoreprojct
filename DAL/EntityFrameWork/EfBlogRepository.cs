@@ -11,14 +11,21 @@ using System.Threading.Tasks;
 
 namespace DAL.EntityFrameWork
 {
-	public class EfBlogRepository : GenericRepository<Blog>, IBlogDAL
-	{
-		public List<Blog> GetBlogsFromCategory()
-		{
-			using( var c = new DB()) 
-			{
-				return c.blogs.Include(i=>i.Category).ToList();
-			}
-		}
-	}
+    public class EfBlogRepository : GenericRepository<Blog>, IBlogDAL
+    {
+        public List<Blog> GetBlogsFromCategory()
+        {
+            using (var c = new DB())
+            {
+                return c.blogs.Include(i => i.Category).ToList();
+            }
+        }
+        public List<Blog> GetBlogsByCategoryWithWriter(int id)
+        {
+            using (var db = new DB())
+            {
+                return db.blogs.Include(i => i.Category).Where(i => i.Writerid == id).ToList();
+            }
+        }
+    }
 }

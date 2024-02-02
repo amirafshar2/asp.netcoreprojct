@@ -34,6 +34,11 @@ namespace BLL.Concreate
             return _ıBLogDal.GetAll(x => x.id == id);
         }
 
+        public List<Blog> GetBlogByCategoryWithWriter(int id)
+        {
+           return _ıBLogDal.GetBlogsByCategoryWithWriter(id);
+        }
+
         public List<Blog> GetBlogByWriter(int id)
         {
             List<Blog> q = new List<Blog>();

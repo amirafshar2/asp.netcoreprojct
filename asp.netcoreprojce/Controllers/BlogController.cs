@@ -11,6 +11,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace asp.netcoreprojce.Controllers
 {
@@ -33,24 +34,36 @@ namespace asp.netcoreprojce.Controllers
      
         public IActionResult BlogBayWriter () 
         {
-            var value = bl.GetBlogByWriter(1);
+            var value = bl.GetBlogByCategoryWithWriter(1);
             return View(value);
         }
+        [HttpPost]
+        public IActionResult ReadBlogBayWriter()
+        {
+            var value = bl.GetBlogByCategoryWithWriter(1);
+            return Ok(value);
+
+        }
+       
         [HttpGet]
         public IActionResult BlogAdd()
         {
+            CategoryManager c = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> CategoryValues = (from x in c.GetAll() select new SelectListItem{Text=x.Name , Value=x.id.ToString()}).ToList();
+            ViewBag.cv = CategoryValues;
             return View();
         }
         [HttpPost]
         public IActionResult BlogAdd(Blog b)
         {
-            WriterValidator bv = new WriterValidator();
+           BlogValidator bv = new BlogValidator();
             ValidationResult result = bv.Validate(b);
             if (result.IsValid)
             {
                 b.Status = true;
                 b.CreateDate = DateTime.Now;
                 b.Writerid = 1;
+
                 bl.İnsert(b);
                 return RedirectToAction("BlogBayWriter", "Blog");
             }
