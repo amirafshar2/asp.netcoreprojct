@@ -1,14 +1,14 @@
 ﻿@model BE.concrete.Blog
 @{
-    ViewData["Title"] = "BlogAdd";
+    ViewData["Title"] = "BlogUpdate";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
+<h1>BlogUpdate</h1>
 
-<h2>Yeni Blog Girişi</h2>
 <br />
 
-@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+@using (Html.BeginForm("BlogUpdate", "Blog", FormMethod.Post))
 {
     @Html.Label("Blog Başlığı")
     @Html.TextBoxFor(i=>i.Title,new{@class="form-control"})

@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @model IEnumerable<BE.concrete.Blog>
 
 @{
@@ -23,6 +23,12 @@
 
 <div>
     <h2>Bloglar</h2>
+    <br />
+    <div>
+        <a href="/Blog/BlogAdd" class="btn btn-primary "><i class="mdi mdi-library-plus menu-icon"></i>Yeni Blog Oluştur</a>
+
+    </div>
+    <br />
     <table class="table table-striped">
         <thead>
             <tr>
@@ -40,20 +46,16 @@
             {
                 <tr>
 
-                    <th>@item.id</th>
+                    <th class="idd">@item.id</th>
                     <td>@item.Category.Name</td>
                     <td>@item.Title</td>
-                    <td><button href="#" class="btn" id="Statusbtn">@item.Status</button></td>                   
+                    <td><button href="#" class="btn" id="Statusbtn">@item.Status</button></td>
                     <td>@item.CreateDate.ToString("dd,MMM.yyyy")</td>
-                    <td><a href="#" class="btn btn-danger"><i class="mdi mdi-delete menu-icon"></i>Sil</a></td>
-                    <td><a href="#" class="btn btn-warning"><i class="mdi mdi-flattr menu-icon"></i>Düzenle</a></td>
+                    <td><a href="/Blog/BlogRemove/@item.id" class="Delete btn btn-danger"><i class="mdi mdi-delete menu-icon"></i>Sil</a></td>
+                    <td><a href="/Blog/BlogUpdate/@item.id" class="btn btn-warning"><i class="mdi mdi-flattr menu-icon"></i>Düzenle</a></td>
                 </tr>
             }
         </tbody>
     </table>
-</div>
-<div>
-    <a href="#" class="btn btn-primary"><i class="mdi mdi-library-plus menu-icon"></i>      Yeni Blog Oluştur</a>
-  
 </div>
 

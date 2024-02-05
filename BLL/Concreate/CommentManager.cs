@@ -43,6 +43,11 @@ namespace BLL.Concreate
             throw new NotImplementedException();
         }
 
+        public void Update(Comment t, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void İnsert(Comment t)
 		{
 			_ıCommentDal.İnsert(t);

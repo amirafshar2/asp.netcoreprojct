@@ -39,5 +39,10 @@ namespace BLL.Concreate
         {
             return _categoryDal.GetById(id);
         }
+
+        public void Update(Category t, int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace BLL.Abstract
     {
         void İnsert(T t);
         void Delete(T t);
-        void Update(T t);
+        void Update(T t, int id);
         List<T> GetAll();
         T GetById(int id);
     }

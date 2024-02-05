@@ -38,6 +38,11 @@ namespace BLL.Concreate
             throw new NotImplementedException();
         }
 
+        public void Update(About t, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void İnsert(About t)
         {
             throw new NotImplementedException();

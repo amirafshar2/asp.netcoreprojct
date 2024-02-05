@@ -40,6 +40,11 @@ namespace BLL.Concreate
             throw new NotImplementedException();
         }
 
+        public void Update(NewsLatter t, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void İnsert(NewsLatter t)
         {
             _ıNewsdal.İnsert(t);

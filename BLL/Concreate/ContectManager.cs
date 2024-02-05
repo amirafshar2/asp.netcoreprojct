@@ -40,6 +40,11 @@ namespace BLL.Concreate
             throw new NotImplementedException();
         }
 
+        public void Update(Contact t, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void İnsert(Contact t)
         {
             _ıContectDal.İnsert(t);

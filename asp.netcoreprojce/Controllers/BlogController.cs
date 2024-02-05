@@ -76,5 +76,44 @@ namespace asp.netcoreprojce.Controllers
             }
             return View();
         }
+       
+        public ActionResult BlogRemove(int id)
+        {
+            var q= bl.GetById(id);
+            bl.Delete(q);
+            return RedirectToAction("BlogBayWriter");
+        }
+        [HttpGet]
+        public ActionResult BlogUpdate(int id)
+        {
+            CategoryManager c = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> CategoryValues = (from x in c.GetAll() select new SelectListItem { Text = x.Name, Value = x.id.ToString() }).ToList();
+            ViewBag.cv = CategoryValues;
+            var q = bl.GetBayİd(id);
+            return View(q);
+        }
+        [HttpPost]
+        public ActionResult BlogUpdate(Blog b)
+        {
+            BlogValidator bv = new BlogValidator();
+            ValidationResult result = bv.Validate(b);
+            if (result.IsValid)
+            {
+                b.Status = true;
+                b.CreateDate = DateTime.Now;
+                b.Writerid = 1;
+
+                bl.Update(b);
+                return RedirectToAction("BlogBayWriter", "Blog");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
     }
 }

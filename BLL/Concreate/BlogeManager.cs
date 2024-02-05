@@ -21,7 +21,8 @@ namespace BLL.Concreate
 
         public void Delete(Blog t)
         {
-            throw new NotImplementedException();
+            var q = GetById(t.id);
+            _ıBLogDal.Delete(q);
         }
 
         public List<Blog> GetAll()
@@ -34,9 +35,14 @@ namespace BLL.Concreate
             return _ıBLogDal.GetAll(x => x.id == id);
         }
 
+        public Blog GetBayİd(int id)
+        {
+            return _ıBLogDal.GetById(id);
+        }
+
         public List<Blog> GetBlogByCategoryWithWriter(int id)
         {
-           return _ıBLogDal.GetBlogsByCategoryWithWriter(id);
+            return _ıBLogDal.GetBlogsByCategoryWithWriter(id);
         }
 
         public List<Blog> GetBlogByWriter(int id)
@@ -70,19 +76,34 @@ namespace BLL.Concreate
             int a = 0;
             foreach (var item in _ıBLogDal.GetAll())
             {
-                if (a <=2)
+                if (a <= 2)
                 {
                     q.Add(item);
                     a++;
                 }
-                
+
             }
             return q;
         }
 
         public void Update(Blog t)
         {
-            throw new NotImplementedException();
+            
+            _ıBLogDal.Update(t);
+        }
+
+        public void Update(Blog t, int id)
+        {
+            var q = GetById(id);
+            q.Title = t.Title;
+            q.Status = t.Status;
+            q.İmage = t.İmage;
+            q.Categoryid = t.Categoryid;
+            q.Content = t.Content;
+            q.TompNailİmage = t.TompNailİmage;
+            q.CreateDate = t.CreateDate;
+
+            _ıBLogDal.Update(q);
         }
 
         public void İnsert(Blog t)
