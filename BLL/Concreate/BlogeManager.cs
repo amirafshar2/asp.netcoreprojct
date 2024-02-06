@@ -76,7 +76,7 @@ namespace BLL.Concreate
             int a = 0;
             foreach (var item in _ıBLogDal.GetAll())
             {
-                if (a <= 2)
+                if (a <= 3)
                 {
                     q.Add(item);
                     a++;
@@ -84,6 +84,21 @@ namespace BLL.Concreate
 
             }
             return q;
+        }
+
+        public List<Blog> Last10BlogList()
+        {
+            var q =  _ıBLogDal.GetBlogsFromCategory();
+            int a = 0;
+            List<Blog> b = new List<Blog>();
+            foreach (var item in q)
+            {
+                if (a<10)
+                {
+                    b.Add(item);
+                }
+            }
+            return b;
         }
 
         public void Update(Blog t)
