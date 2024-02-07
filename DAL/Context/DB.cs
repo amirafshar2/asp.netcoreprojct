@@ -22,7 +22,7 @@ namespace DAL.Context
         public DbSet<Contact> contacts { get; set; }
         public DbSet<Writer> writers { get; set; }
         public DbSet<NewsLatter> newsLatters { get; set; }
-
+        public DbSet<BlogRayting> blogRaytings { get; set; }
         public void Dispose()
         {
             base.Dispose();

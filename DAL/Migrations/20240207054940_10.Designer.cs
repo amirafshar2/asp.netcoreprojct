@@ -4,6 +4,7 @@ using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    partial class DBModelSnapshot : ModelSnapshot
+    [Migration("20240207054940_10")]
+    partial class _10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,28 +108,6 @@ namespace DAL.Migrations
                     b.HasIndex("Writerid");
 
                     b.ToTable("blogs");
-                });
-
-            modelBuilder.Entity("BE.concrete.BlogRayting", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<int>("BlogRaytingCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BlogTotalScore")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Blogid")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("blogRaytings");
                 });
 
             modelBuilder.Entity("BE.concrete.Category", b =>
@@ -277,10 +258,6 @@ namespace DAL.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<string>("İmage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 

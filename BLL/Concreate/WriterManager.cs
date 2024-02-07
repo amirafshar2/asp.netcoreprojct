@@ -25,15 +25,20 @@ namespace BLL.Concreate
 
         public List<Writer> GetAll()
         {
-            throw new NotImplementedException();
+            return _writerDAL.GetAll();
         }
 
         public Writer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _writerDAL.GetById(id);
         }
 
-        public void Update(Writer t)
+		public List<Writer> GetWriterBayId(int id)
+		{
+			return _writerDAL.GetAll().Where(i=>i.id == id).ToList();
+		}
+
+		public void Update(Writer t)
         {
             throw new NotImplementedException();
         }

@@ -6,10 +6,10 @@ namespace asp.netcoreprojce.ViewComponents.Dashbaord
 {
     public class DashboardİmageCard : ViewComponent
     {
-        BlogeManager bll = new BlogeManager(new EfBlogRepository());
+        WriterManager bll = new WriterManager(new EfWriterRepository());
         public IViewComponentResult Invoke()
         {
-            var value = bll.GetLast3Blogs();
+            var value = bll.GetWriterBayId(1);
             return View(value);
         }
     }

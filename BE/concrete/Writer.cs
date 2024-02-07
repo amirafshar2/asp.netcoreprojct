@@ -15,6 +15,7 @@ namespace BE.concrete
         public string About  { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
+        public string İmage { get; set; }
         public bool Status { get; set; }
         public List<Blog> Blogs { get; set; }
     }
