@@ -21,7 +21,7 @@
                                 <tr>
                                     <td> @item.id </td>
                                     <td> @item.Name </td>
-                                    <td> @item.Status </td>
+                                    <td> <a style="cursor:pointer" class="@StatusColor(@item.Status.ToString())"> @Statuses(@item.Status.ToString())</a> </td>
                                     <td>
                                         <div class="progress">
                                             <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -37,3 +37,35 @@
     </div>
 
 </div>
+@functions {
+    string Statuses (string s)
+    {
+        if (s != null)
+        {
+            if (s == "True")
+            {
+                return "Aktif";
+            }
+            else
+            {
+                return "Pasif";
+            }
+        }
+        return "Berilenmedi";
+    }
+    string StatusColor(string s)
+    {
+        if (s != null)
+        {
+            if (s == "True")
+            {
+                return "badge badge-gradient-success";
+            }
+            else
+            {
+                return "badge badge-gradient-danger";
+            }
+        }
+        return "badge badge-gradient-warning";
+    }
+}

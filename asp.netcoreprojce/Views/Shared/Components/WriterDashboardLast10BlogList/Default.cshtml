@@ -25,7 +25,7 @@
                                         <img src="@item.İmage" class="mr-2" alt="image"> @item.Title
                                     </td>
                                     <td>
-                                        <label class="badge badge-gradient-success">@item.Category.Name</label>
+                                        <label class="badge @GetCategoryBadgeClass(item.Category.Name)">@item.Category.Name</label>
                                     </td>
                                     <td> @item.CreateDate.ToString("dd,MMM,yyyy") </td>
                                     <td><a href="/Blog/BlogReadAll/@item.id/" class="btn btn-dark">Detaylar</a></td>
@@ -38,3 +38,30 @@
         </div>
     </div>
 </div>
+
+
+
+ @functions {
+    string GetCategoryBadgeClass(string c)
+    {
+        if (!string.IsNullOrEmpty(c))
+        {
+            switch (c)
+            {
+                case "Yazılım":
+                    return "badge badge-gradient-success";
+                case "Teknoloji":
+                    return "badge badge-gradient-danger";
+                case "Filim ":
+                    return "badge badge-gradient-warning";
+                case "Spor":
+                    return "badge badge-gradient-primary";
+            }
+        }
+          
+        
+         return "badge badge-gradient-primary";
+       
+    }
+}
+ 

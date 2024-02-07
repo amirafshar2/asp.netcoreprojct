@@ -23,6 +23,11 @@ namespace DAL.Context
         public DbSet<Writer> writers { get; set; }
         public DbSet<NewsLatter> newsLatters { get; set; }
         public DbSet<BlogRayting> blogRaytings { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Blog>().ToTable(tb => tb.HasTrigger("AddBlogInRatingTable"));
+            modelBuilder.Entity<Comment>().ToTable(tb => tb.HasTrigger("AddScoreInComment"));
+        }
         public void Dispose()
         {
             base.Dispose();
