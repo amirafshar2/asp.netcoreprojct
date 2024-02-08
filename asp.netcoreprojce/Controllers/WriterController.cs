@@ -6,6 +6,7 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace asp.netcoreprojce.Controllers
 {
@@ -21,6 +22,11 @@ namespace asp.netcoreprojce.Controllers
         {
             return PartialView();
         }
+
+
+
+
+
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
@@ -46,6 +52,36 @@ namespace asp.netcoreprojce.Controllers
                 }
             }
             return View();
+        }
+
+
+
+
+        [HttpGet]
+        public IActionResult WriterAdd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult WriterAdd(Models.Writer w)
+        {
+            Writer wr = new Writer();
+            if (w.İmage!= null)
+            {
+                var extention = Path.GetExtension(w.İmage.FileName);
+                var newimagename = Guid.NewGuid() + extention;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterİmageFile/", newimagename);
+                var stream = new FileStream(location,FileMode.Create);
+                w.İmage.CopyTo(stream);
+                wr.İmage = newimagename;
+            }
+            wr.Mail = w.Mail;
+            wr.Name = w.Mail;
+            wr.About = w.About;
+            wr.Status = w.Status;
+            wr.Password = w.Password;
+            bll.İnsert(wr);
+            return RedirectToAction("Index", "WriterDashboard");
         }
     }
 }

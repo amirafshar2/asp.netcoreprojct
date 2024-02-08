@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\WriterİmageFile\" />
     <Folder Include="wwwroot\Core404Page-main\" />
   </ItemGroup>
 
