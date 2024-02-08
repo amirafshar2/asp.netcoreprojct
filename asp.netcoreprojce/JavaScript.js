@@ -3,7 +3,35 @@
 
 
 
-$(ducument).ready(function () {
+
+
+$(document).ready(function () {
+
+    $("#savebtn").on("Click", function (e) {
+        e.preventDefault();
+        if ($("#pas1").text() === $("#pas2").text()) {
+            var Deleteurl = $(this).attr("href");
+            window.location.href = deleteUrl;
+        } else {
+            swal.fire({
+                title: "Uyarı",
+                text: "Şifreniz Uyuşmiyor! Tekrar Deneyın",
+                icon: "warning",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Tamam",
+
+            });
+        }
+    });
+
+
+});
+
+
+
+$(document).ready(function () {
     $(".Delete").on("click", function (e) {
         e.preventDefault();
         var Deleteurl = '/Blog/BlogRemove/';

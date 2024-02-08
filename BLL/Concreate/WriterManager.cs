@@ -40,12 +40,14 @@ namespace BLL.Concreate
 
 		public void Update(Writer t)
         {
-            throw new NotImplementedException();
+            _writerDAL.Update(t);
         }
 
-        public void Update(Writer t, int id)
+      
+
+        public void Updatew(int id, Writer w)
         {
-            throw new NotImplementedException();
+            _writerDAL.Updatew(id, w);
         }
 
         public void İnsert(Writer t)

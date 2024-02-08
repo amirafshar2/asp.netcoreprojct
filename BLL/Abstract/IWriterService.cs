@@ -10,5 +10,6 @@ namespace BLL.Abstract
     public interface IWriterService : IGenericService<Writer>
     {
        public List<Writer> GetWriterBayId(int id);
+        public void Updatew(int id, Writer w);
     }
 }
