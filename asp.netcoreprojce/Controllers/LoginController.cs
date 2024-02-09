@@ -30,7 +30,7 @@ namespace asp.netcoreprojce.Controllers
 				var UserIdentitiy = new ClaimsIdentity(Claims, "a");
 				ClaimsPrincipal principal = new ClaimsPrincipal(UserIdentitiy);
 				await HttpContext.SignInAsync(principal);
-				return RedirectToAction("Index", "Writer");
+				return RedirectToAction("Index", "WriterDashboard");
 			}
 			else
 			{

@@ -23,7 +23,7 @@ namespace asp.netcoreprojce.Controllers
         {
 			c.Date = DateTime.Now;
 			c.Status = true;
-			c.Blogid = 7;
+			c.Blogid = 2;
 			cm.İnsert(c);
 			
 			return PartialView();

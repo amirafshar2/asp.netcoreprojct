@@ -34,13 +34,13 @@ namespace asp.netcoreprojce.Controllers
      
         public IActionResult BlogBayWriter () 
         {
-            var value = bl.GetBlogByCategoryWithWriter(1);
+            var value = bl.GetBlogByCategoryWithWriter(2);
             return View(value);
         }
         [HttpPost]
         public IActionResult ReadBlogBayWriter()
         {
-            var value = bl.GetBlogByCategoryWithWriter(1);
+            var value = bl.GetBlogByCategoryWithWriter(2);
             return Ok(value);
 
         }
@@ -62,7 +62,7 @@ namespace asp.netcoreprojce.Controllers
             {
                 b.Status = true;
                 b.CreateDate = DateTime.Now;
-                b.Writerid = 1;
+                b.Writerid = 2;
 
                 bl.İnsert(b);
                 return RedirectToAction("BlogBayWriter", "Blog");
@@ -101,7 +101,7 @@ namespace asp.netcoreprojce.Controllers
             {
                 b.Status = true;
                 b.CreateDate = DateTime.Now;
-                b.Writerid = 1;
+                b.Writerid = 2;
 
                 bl.Update(b);
                 return RedirectToAction("BlogBayWriter", "Blog");

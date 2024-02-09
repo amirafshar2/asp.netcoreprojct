@@ -30,7 +30,7 @@ namespace asp.netcoreprojce.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var value = bll.GetById(1);
+            var value = bll.GetById(2);
             return View(value);
         }
         [HttpPost]
