@@ -12,7 +12,7 @@
         <div class="dropdown-divider"></div>
         @foreach (var item in Model)
         {
-            <a class="dropdown-item preview-item">
+            <a class="dropdown-item preview-item" >
                 <div class="preview-thumbnail">
                     <div class="@item.SymbolColor">
                         <i class="@item.TypeSymbol"></i>
@@ -25,7 +25,10 @@
             </a>
         }
 
-        @* <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div>
+        <a href="/Notification/NotificationList/" style="cursor:pointer"> <h6 class="p-3 mb-0 text-center">Butun bildirimler Gör</h6></a>
+    </div>
+</li>    @* <div class="dropdown-divider"></div>
         <a class="dropdown-item preview-item">
         <div class="preview-thumbnail">
         <div class="preview-icon bg-warning">
@@ -49,7 +52,4 @@
         <p class="text-gray ellipsis mb-0"> Yeni admin vow! </p>
         </div>
         </a>
-        *@        <div class="dropdown-divider"></div>
-        <h6 class="p-3 mb-0 text-center">Butun bildirimler Gör</h6>
-    </div>
-</li>
+        *@
