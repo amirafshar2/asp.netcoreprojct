@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20240207055623_11")]
-    partial class _11
+    [Migration("20240210071923_3")]
+    partial class _3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("Writerid");
 
-                    b.ToTable("blogs");
+                    b.ToTable("blogs", t =>
+                        {
+                            t.HasTrigger("AddBlogInRatingTable");
+                        });
                 });
 
             modelBuilder.Entity("BE.concrete.BlogRayting", b =>
@@ -196,7 +199,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("Blogid");
 
-                    b.ToTable("comments");
+                    b.ToTable("comments", t =>
+                        {
+                            t.HasTrigger("AddScoreInComment");
+                        });
                 });
 
             modelBuilder.Entity("BE.concrete.Contact", b =>
@@ -234,6 +240,37 @@ namespace DAL.Migrations
                     b.ToTable("contacts");
                 });
 
+            modelBuilder.Entity("BE.concrete.Message", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Receiver")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("messages");
+                });
+
             modelBuilder.Entity("BE.concrete.NewsLatter", b =>
                 {
                     b.Property<int>("id")
@@ -252,6 +289,41 @@ namespace DAL.Migrations
                     b.HasKey("id");
 
                     b.ToTable("newsLatters");
+                });
+
+            modelBuilder.Entity("BE.concrete.Notification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SymbolColor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeSymbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("notifications");
                 });
 
             modelBuilder.Entity("BE.concrete.Writer", b =>
@@ -280,6 +352,10 @@ namespace DAL.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
+
+                    b.Property<string>("İmage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20240207054940_10")]
-    partial class _10
+    [Migration("20240210071826_2")]
+    partial class _2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,32 @@ namespace DAL.Migrations
 
                     b.HasIndex("Writerid");
 
-                    b.ToTable("blogs");
+                    b.ToTable("blogs", t =>
+                        {
+                            t.HasTrigger("AddBlogInRatingTable");
+                        });
+                });
+
+            modelBuilder.Entity("BE.concrete.BlogRayting", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("BlogRaytingCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BlogTotalScore")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Blogid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("blogRaytings");
                 });
 
             modelBuilder.Entity("BE.concrete.Category", b =>
@@ -174,7 +199,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("Blogid");
 
-                    b.ToTable("comments");
+                    b.ToTable("comments", t =>
+                        {
+                            t.HasTrigger("AddScoreInComment");
+                        });
                 });
 
             modelBuilder.Entity("BE.concrete.Contact", b =>
@@ -232,6 +260,41 @@ namespace DAL.Migrations
                     b.ToTable("newsLatters");
                 });
 
+            modelBuilder.Entity("BE.concrete.Notification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SymbolColor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeSymbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("notifications");
+                });
+
             modelBuilder.Entity("BE.concrete.Writer", b =>
                 {
                     b.Property<int>("id")
@@ -258,6 +321,10 @@ namespace DAL.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
+
+                    b.Property<string>("İmage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20240130084604_1")]
-    partial class _1
+    [Migration("20240210081700_4")]
+    partial class _4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,32 @@ namespace DAL.Migrations
 
                     b.HasIndex("Writerid");
 
-                    b.ToTable("blogs");
+                    b.ToTable("blogs", t =>
+                        {
+                            t.HasTrigger("AddBlogInRatingTable");
+                        });
+                });
+
+            modelBuilder.Entity("BE.concrete.BlogRayting", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("BlogRaytingCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BlogTotalScore")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Blogid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("blogRaytings");
                 });
 
             modelBuilder.Entity("BE.concrete.Category", b =>
@@ -142,6 +167,9 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<int>("BlogScore")
+                        .HasColumnType("int");
+
                     b.Property<int>("Blogid")
                         .HasColumnType("int");
 
@@ -171,7 +199,10 @@ namespace DAL.Migrations
 
                     b.HasIndex("Blogid");
 
-                    b.ToTable("comments");
+                    b.ToTable("comments", t =>
+                        {
+                            t.HasTrigger("AddScoreInComment");
+                        });
                 });
 
             modelBuilder.Entity("BE.concrete.Contact", b =>
@@ -209,6 +240,70 @@ namespace DAL.Migrations
                     b.ToTable("contacts");
                 });
 
+            modelBuilder.Entity("BE.concrete.Message", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Receiver")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("messages");
+                });
+
+            modelBuilder.Entity("BE.concrete.Message2", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Receiverid")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Senderid")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Receiverid");
+
+                    b.HasIndex("Senderid");
+
+                    b.ToTable("messages2");
+                });
+
             modelBuilder.Entity("BE.concrete.NewsLatter", b =>
                 {
                     b.Property<int>("id")
@@ -227,6 +322,41 @@ namespace DAL.Migrations
                     b.HasKey("id");
 
                     b.ToTable("newsLatters");
+                });
+
+            modelBuilder.Entity("BE.concrete.Notification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SymbolColor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeSymbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("notifications");
                 });
 
             modelBuilder.Entity("BE.concrete.Writer", b =>
@@ -255,6 +385,10 @@ namespace DAL.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
+
+                    b.Property<string>("İmage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -291,6 +425,21 @@ namespace DAL.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("BE.concrete.Message2", b =>
+                {
+                    b.HasOne("BE.concrete.Writer", "ReceiverUser")
+                        .WithMany("WriterReceiver")
+                        .HasForeignKey("Receiverid");
+
+                    b.HasOne("BE.concrete.Writer", "SenderUser")
+                        .WithMany("WriterSender")
+                        .HasForeignKey("Senderid");
+
+                    b.Navigation("ReceiverUser");
+
+                    b.Navigation("SenderUser");
+                });
+
             modelBuilder.Entity("BE.concrete.Blog", b =>
                 {
                     b.Navigation("Comments");
@@ -304,6 +453,10 @@ namespace DAL.Migrations
             modelBuilder.Entity("BE.concrete.Writer", b =>
                 {
                     b.Navigation("Blogs");
+
+                    b.Navigation("WriterReceiver");
+
+                    b.Navigation("WriterSender");
                 });
 #pragma warning restore 612, 618
         }

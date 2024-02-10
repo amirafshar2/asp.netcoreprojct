@@ -13,7 +13,7 @@ namespace asp.netcoreprojce.ViewComponents.Writer
         public IViewComponentResult Invoke()
         {
             ViewBag.bl= _Blogbll.GetAll().Count().ToString();
-            ViewBag.wbl=_Blogbll.GetBlogByCategoryWithWriter(1).Count().ToString();
+            ViewBag.wbl=_Blogbll.GetBlogByCategoryWithWriter(2).Count().ToString();
             ViewBag.cl = _categorybll.GetAll().Count().ToString();
             return View();
         }

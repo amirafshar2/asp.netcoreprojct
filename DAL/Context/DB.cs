@@ -24,8 +24,22 @@ namespace DAL.Context
         public DbSet<NewsLatter> newsLatters { get; set; }
         public DbSet<BlogRayting> blogRaytings { get; set; }
         public DbSet<Notification> notifications { get; set; }
+        public DbSet<Message> messages { get; set; }
+        public DbSet<Message2> messages2 { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Message2>()
+                .HasOne(x => x.SenderUser)
+                .WithMany(Y => Y.WriterSender)
+                .HasForeignKey(z => z.Senderid)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+            modelBuilder.Entity<Message2>()
+                .HasOne(x => x.ReceiverUser)
+                .WithMany(Y => Y.WriterReceiver)
+                .HasForeignKey(z => z.Receiverid)
+                .OnDelete(DeleteBehavior.ClientSetNull);               
+                
+
             modelBuilder.Entity<Blog>().ToTable(tb => tb.HasTrigger("AddBlogInRatingTable"));
             modelBuilder.Entity<Comment>().ToTable(tb => tb.HasTrigger("AddScoreInComment"));
         }

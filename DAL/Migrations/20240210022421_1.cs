@@ -31,6 +31,21 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "blogRaytings",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Blogid = table.Column<int>(type: "int", nullable: false),
+                    BlogTotalScore = table.Column<int>(type: "int", nullable: false),
+                    BlogRaytingCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_blogRaytings", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "categories",
                 columns: table => new
                 {
@@ -78,6 +93,24 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "notifications",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TypeSymbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    SymbolColor = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_notifications", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "writers",
                 columns: table => new
                 {
@@ -87,6 +120,7 @@ namespace DAL.Migrations
                     About = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    İmage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -137,6 +171,7 @@ namespace DAL.Migrations
                     Emil = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BlogScore = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     Blogid = table.Column<int>(type: "int", nullable: false)
                 },
@@ -174,6 +209,9 @@ namespace DAL.Migrations
                 name: "abouts");
 
             migrationBuilder.DropTable(
+                name: "blogRaytings");
+
+            migrationBuilder.DropTable(
                 name: "comments");
 
             migrationBuilder.DropTable(
@@ -181,6 +219,9 @@ namespace DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "newsLatters");
+
+            migrationBuilder.DropTable(
+                name: "notifications");
 
             migrationBuilder.DropTable(
                 name: "blogs");

@@ -21,9 +21,10 @@ namespace asp.netcoreprojce.Controllers
         [HttpPost]
         public PartialViewResult PartialAddComment(Comment c)
         {
-			c.Date = DateTime.Now;
-			c.Status = true;
 			c.Blogid = 2;
+            c.Date = DateTime.Now;
+			c.Status = true;
+			
 			cm.İnsert(c);
 			
 			return PartialView();

@@ -5,16 +5,16 @@
 namespace DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class _12 : Migration
+    public partial class _5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "İmage",
-                table: "writers",
+                name: "Details",
+                table: "messages2",
                 type: "nvarchar(max)",
-                nullable: true,
+                nullable: false,
                 defaultValue: "");
         }
 
@@ -22,8 +22,8 @@ namespace DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "İmage",
-                table: "writers");
+                name: "Details",
+                table: "messages2");
         }
     }
 }

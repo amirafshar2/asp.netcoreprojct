@@ -1,5 +1,6 @@
 ﻿
 
+@model BE.concrete.Comment
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -10,10 +11,10 @@
 <div class="comment-top">
     <h4>Yorum Yap</h4>
     <div class="comment-bottom">
-        <form method="post">
+        <form asp-action="/Comment/PartialAddComment" method="post">
             <input class="form-control" id="nametxt" type="text" name="UserName" placeholder="İsim" required="">
             <input class="form-control" id="emailtxt" type="email" name="Email" placeholder="Email" required="">
-
+            @Model.Blogid = ViewBag.Id
             <input class="form-control" id="titletxt" type="text" name="Title" placeholder="Başlık" required="">
 
             <textarea class="form-control" id="messagetxt" name="Message" placeholder="Yorum..." required=""></textarea>
@@ -21,7 +22,12 @@
         </form>
     </div>
 </div>
-<script>
+
+
+
+
+
+@*<script>
     
     $(document).ready(function () {
         function Comment() {
@@ -63,4 +69,4 @@
 
 
 
-</script>
+</script>*@

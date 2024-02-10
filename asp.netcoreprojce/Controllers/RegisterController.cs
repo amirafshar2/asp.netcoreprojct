@@ -36,6 +36,7 @@ namespace asp.netcoreprojce.Controllers
 			ValidationResult result = vw.Validate(w);
 			if (result.IsValid)
 			{
+				w.İmage = "/CoreTema/images/t3.jpg";
 				r.İnsert(w);
 				return RedirectToAction("Index", "Blog");
 			}
