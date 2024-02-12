@@ -11,5 +11,6 @@ namespace BLL.Abstract
     {
        public List<Writer> GetWriterBayId(int id);
         public void Updatew(int id, Writer w);
+        Writer GetWriterBayEmail(string e);
     }
 }

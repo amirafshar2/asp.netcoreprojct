@@ -16,6 +16,8 @@ namespace asp.netcoreprojce.Controllers
         WriterManager bll = new WriterManager(new EfWriterRepository());
         public IActionResult Index()
         {
+            var UserMail = User.Identity.Name;
+            ViewBag.v=UserMail;
             return View();
         }
         public PartialViewResult WriterSideBar()
@@ -23,25 +25,29 @@ namespace asp.netcoreprojce.Controllers
             return PartialView();
         }
 
-
+        
 
 
 
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var value = bll.GetById(2);
+            var UserEmail = User.Identity.Name;
+            var U = bll.GetWriterBayEmail(UserEmail);
+            var value = bll.GetById(U.id);
             return View(value);
         }
         [HttpPost]
         public IActionResult WriterEditProfile(Writer w)
         {
+            var UserEmail = User.Identity.Name;
+            var U = bll.GetWriterBayEmail(UserEmail);
             WriterValidator vl = new WriterValidator();
             ValidationResult result = vl.Validate(w);
             if (result.IsValid)
             {
                 w.İmage = "/CoreTema/images/11.jpg";
-                bll.Updatew(1,w);
+                bll.Updatew(U.id,w);
                 return RedirectToAction("Index", "WriterDashboard");
             }
             else

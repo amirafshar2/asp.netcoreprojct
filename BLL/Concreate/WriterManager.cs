@@ -33,7 +33,12 @@ namespace BLL.Concreate
             return _writerDAL.GetById(id);
         }
 
-		public List<Writer> GetWriterBayId(int id)
+        public Writer GetWriterBayEmail(string e)
+        {
+            return _writerDAL.GetWriterBayEmail(e);
+        }
+
+        public List<Writer> GetWriterBayId(int id)
 		{
 			return _writerDAL.GetAll().Where(i=>i.id == id).ToList();
 		}

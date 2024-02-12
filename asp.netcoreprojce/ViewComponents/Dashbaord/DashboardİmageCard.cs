@@ -9,7 +9,9 @@ namespace asp.netcoreprojce.ViewComponents.Dashbaord
         WriterManager bll = new WriterManager(new EfWriterRepository());
         public IViewComponentResult Invoke()
         {
-            var value = bll.GetWriterBayId(1);
+            var UserMail = User.Identity.Name;
+            var User1 = bll.GetWriterBayEmail(UserMail); ;
+            var value = bll.GetWriterBayId(User1.id);
             return View(value);
         }
     }

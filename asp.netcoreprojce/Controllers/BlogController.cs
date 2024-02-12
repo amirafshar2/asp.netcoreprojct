@@ -18,13 +18,15 @@ namespace asp.netcoreprojce.Controllers
     public class BlogController : Controller
     {
         BlogeManager bl = new BlogeManager(new EfBlogRepository());
-		[AllowAnonymous]
+        WriterManager _wbll = new WriterManager(new EfWriterRepository());
+
+		
 		public IActionResult Index()
         {
             var values = bl.GetBlogsFromCategory();
             return View(values);
         }
-		[AllowAnonymous]
+		
 		public IActionResult BlogReadAll(int id)
         {
             ViewBag.Id = id;
@@ -34,13 +36,16 @@ namespace asp.netcoreprojce.Controllers
      
         public IActionResult BlogBayWriter () 
         {
-            var value = bl.GetBlogByCategoryWithWriter(2);
+            var UserEmail = User.Identity.Name;
+            var U = _wbll.GetWriterBayEmail(UserEmail);
+            var value = bl.GetBlogByCategoryWithWriter(U.id);
             return View(value);
         }
-        [HttpPost]
         public IActionResult ReadBlogBayWriter()
         {
-            var value = bl.GetBlogByCategoryWithWriter(2);
+            var UserEmail = User.Identity.Name;
+            var U = _wbll.GetWriterBayEmail(UserEmail);
+            var value = bl.GetBlogByCategoryWithWriter(U.id);
             return Ok(value);
 
         }
@@ -60,9 +65,11 @@ namespace asp.netcoreprojce.Controllers
             ValidationResult result = bv.Validate(b);
             if (result.IsValid)
             {
+                var UserEmail = User.Identity.Name;
+                var U = _wbll.GetWriterBayEmail(UserEmail);
                 b.Status = true;
                 b.CreateDate = DateTime.Now;
-                b.Writerid = 2;
+                b.Writerid = U.id;
 
                 bl.İnsert(b);
                 return RedirectToAction("BlogBayWriter", "Blog");
@@ -99,9 +106,11 @@ namespace asp.netcoreprojce.Controllers
             ValidationResult result = bv.Validate(b);
             if (result.IsValid)
             {
+                var UserEmail = User.Identity.Name;
+                var U = _wbll.GetWriterBayEmail(UserEmail);
                 b.Status = true;
                 b.CreateDate = DateTime.Now;
-                b.Writerid = 2;
+                b.Writerid = U.id;
 
                 bl.Update(b);
                 return RedirectToAction("BlogBayWriter", "Blog");

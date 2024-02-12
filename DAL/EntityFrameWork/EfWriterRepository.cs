@@ -13,6 +13,12 @@ namespace DAL.EntityFrameWork
     public class EfWriterRepository : GenericRepository<Writer>, IWriterDAL
     {
         DB db = new DB();
+
+        public Writer GetWriterBayEmail(string e)
+        {
+            return db.writers.Where(i => i.Mail == e).FirstOrDefault();
+        }
+
         public void Updatew(int id, Writer w)
         {
             var q =db.writers.Where(i=>i.id == id).SingleOrDefault();
@@ -27,5 +33,6 @@ namespace DAL.EntityFrameWork
                 db.SaveChanges();
             }
         }
+
     }
 }
