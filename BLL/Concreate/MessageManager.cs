@@ -35,8 +35,8 @@ namespace BLL.Concreate
 
         public List<Message2> GetListBayWriter(int id)
         {
-            
-            return _dal.GetAll(x => x.Receiverid == id).ToList();
+
+            return _dal.MessageListBaySenderAndReciver(id);
         }
 
         public void Update(Message2 t)

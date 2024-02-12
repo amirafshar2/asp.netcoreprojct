@@ -79,6 +79,23 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "messages",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Sender = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Receiver = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_messages", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "newsLatters",
                 columns: table => new
                 {
@@ -161,6 +178,34 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "messages2",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Senderid = table.Column<int>(type: "int", nullable: true),
+                    Receiverid = table.Column<int>(type: "int", nullable: true),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_messages2", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_messages2_writers_Receiverid",
+                        column: x => x.Receiverid,
+                        principalTable: "writers",
+                        principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK_messages2_writers_Senderid",
+                        column: x => x.Senderid,
+                        principalTable: "writers",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "comments",
                 columns: table => new
                 {
@@ -200,6 +245,16 @@ namespace DAL.Migrations
                 name: "IX_comments_Blogid",
                 table: "comments",
                 column: "Blogid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_messages2_Receiverid",
+                table: "messages2",
+                column: "Receiverid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_messages2_Senderid",
+                table: "messages2",
+                column: "Senderid");
         }
 
         /// <inheritdoc />
@@ -216,6 +271,12 @@ namespace DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "contacts");
+
+            migrationBuilder.DropTable(
+                name: "messages");
+
+            migrationBuilder.DropTable(
+                name: "messages2");
 
             migrationBuilder.DropTable(
                 name: "newsLatters");
