@@ -9,5 +9,9 @@ namespace asp.netcoreprojce.Controllers
         {
             return View();
         }
+        public PartialViewResult AdminNavBarPartial()
+        {
+            return PartialView();
+        }
     }
 }
