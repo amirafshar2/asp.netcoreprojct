@@ -50,8 +50,15 @@
                     }
                 </tbody>
             </table>
+            <br />
+            <a href="/Admin/Category/AddCategory/" class="btn btn-info">Yeni Kategory Ekle</a>
+            <br />
         </div>
     </div>
 </div>
 <br/>
+<br/>
+
+<br />
+<br />
 @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{page}))
