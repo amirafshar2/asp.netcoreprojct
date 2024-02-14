@@ -27,7 +27,7 @@ namespace BLL.Concreate
 
         public List<Contact> GetAll()
         {
-            throw new NotImplementedException();
+            return _ıContectDal.GetAll();
         }
 
         public Contact GetById(int id)

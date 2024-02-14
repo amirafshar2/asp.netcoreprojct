@@ -30,7 +30,7 @@ namespace BLL.Concreate
 
         public List<Comment> GetAll()
         {
-            throw new NotImplementedException();
+            return _ıCommentDal.GetAll();
         }
 
         public Comment GetById(int id)
