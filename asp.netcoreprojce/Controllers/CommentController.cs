@@ -2,6 +2,7 @@
 using BLL.Concreate;
 using DAL.EntityFrameWork;
 using DAL.Repostory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace asp.netcoreprojce.Controllers
@@ -9,15 +10,18 @@ namespace asp.netcoreprojce.Controllers
 	public class CommentController : Controller
 	{
 		CommentManager cm = new CommentManager(new EFCommentRepository());
-		public IActionResult Index()
+        [AllowAnonymous]
+        public IActionResult Index()
 		{
 			return View();
 		}
-		[HttpGet]
+        [AllowAnonymous]
+        [HttpGet]
 		public PartialViewResult PartialAddComment()
 		{
 			return PartialView();
 		}
+        [AllowAnonymous]
         [HttpPost]
         public PartialViewResult PartialAddComment(Comment c)
         {
@@ -29,6 +33,7 @@ namespace asp.netcoreprojce.Controllers
 			
 			return PartialView();
         }
+        [AllowAnonymous]
         public PartialViewResult CommentListBayBlog()
 		{
 			return PartialView();

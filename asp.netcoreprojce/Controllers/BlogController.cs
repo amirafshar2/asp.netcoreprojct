@@ -20,14 +20,14 @@ namespace asp.netcoreprojce.Controllers
         BlogeManager bl = new BlogeManager(new EfBlogRepository());
         WriterManager _wbll = new WriterManager(new EfWriterRepository());
 
-		
-		public IActionResult Index()
+        [AllowAnonymous]
+        public IActionResult Index()
         {
             var values = bl.GetBlogsFromCategory();
             return View(values);
         }
-		
-		public IActionResult BlogReadAll(int id)
+        [AllowAnonymous]
+        public IActionResult BlogReadAll(int id)
         {
             ViewBag.Id = id;
             var value = bl.GetAll(id);
