@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="ViewComponents\Message\" />
     <Folder Include="wwwroot\Core404Page-main\" />
     <Folder Include="wwwroot\WriterİmageFile\" />
