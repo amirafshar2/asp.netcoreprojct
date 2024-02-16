@@ -26,6 +26,7 @@ namespace DAL.Context
         public DbSet<Notification> notifications { get; set; }
         public DbSet<Message> messages { get; set; }
         public DbSet<Message2> messages2 { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Message2>()
