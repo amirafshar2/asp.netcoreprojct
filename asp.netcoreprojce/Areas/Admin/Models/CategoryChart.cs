@@ -8,6 +8,6 @@
     {
         public int Count { get; set; }
 
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
     }
 }

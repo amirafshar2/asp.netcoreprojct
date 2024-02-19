@@ -65,6 +65,11 @@ namespace BLL.Concreate
             return _ıBLogDal.GetBlogsFromCategory();
         }
 
+        public List<Blog> GetBlogsFromCategory(int catid)
+        {
+            return GetBlogsFromCategory(catid);
+        }
+
         public Blog GetById(int id)
         {
             return _ıBLogDal.GetById(id);

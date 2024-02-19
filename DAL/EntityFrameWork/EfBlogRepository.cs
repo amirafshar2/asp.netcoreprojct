@@ -27,5 +27,13 @@ namespace DAL.EntityFrameWork
                 return db.blogs.Include(i => i.Category).Where(i => i.Writerid == id).ToList();
             }
         }
+
+        public List<Blog> GetBlogsFromCategory(int catid)
+        {
+            using (var c = new DB())
+            {
+                return c.blogs.Include(i => i.Category).Where(l=>l.Categoryid== catid).ToList();
+            }
+        }
     }
 }

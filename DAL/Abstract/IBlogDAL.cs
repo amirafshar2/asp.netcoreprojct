@@ -10,6 +10,7 @@ namespace DAL.Abstract
     public interface IBlogDAL : IGenericDAL<Blog>
     {
         List<Blog> GetBlogsFromCategory();
+        List<Blog> GetBlogsFromCategory(int catid);
         public List<Blog> GetBlogsByCategoryWithWriter(int id);
     }
 }

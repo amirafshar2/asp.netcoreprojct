@@ -1,37 +1,39 @@
 ﻿using asp.netcoreprojce.Areas.Admin.Models;
-using BE.concrete;
 using BLL.Concreate;
+using DAL.Context;
 using DAL.EntityFrameWork;
-using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace asp.netcoreprojce.Areas.Admin.Controllers
 {
+  
     public class ChartController : Controller
     {
-        BlogeManager _BlogBLL = new BlogeManager(new EfBlogRepository());
-        CategoryManager _CategoryBLL = new CategoryManager(new EfCategoryRepository());
+        BlogeManager _BlogBll = new BlogeManager(new EfBlogRepository());
+        CategoryManager _CategoryBll  = new CategoryManager(new EfCategoryRepository());
+        [Area("Admin")]
         public IActionResult Index()
-        {
-            List<CategoryChart> CategoryChart = new List<CategoryChart>();
-            var categories = _CategoryBLL.GetAll();
-            foreach (var category in categories)
-            {
-                int blogCount = _BlogBLL.GetBlogsFromCategory().Count(b => b.Categoryid == category.id);
-                CategoryChart.Add(new CategoryChart { Count = blogCount, CategoryName = category.Name });
-            }
-            return View(CategoryChart);
+        {           
+            
+           
+            return View();
         }
-
-
+        //public void countt(List<CategoryChart> categoryCharts)
+        //{
+        //    List<CategoryChart> categoryChar = new List<CategoryChart>();
+        //    countt(categoryChar);
+        //    var Cat = _CategoryBll.GetAll();
+        //    foreach (var item in Cat)
+        //    {
+        //        int coount = _BlogBll.GetBlogsFromCategory(item.id).Count();
+        //        CategoryChart chart = new CategoryChart
+        //        {
+        //            Count = coount,
+        //            Name = item.Name
+        //        };
+        //        categoryCharts.Add(chart);
+        //    }
+        //}
     }
-
-
-
 }
-
-
-
-
-

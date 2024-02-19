@@ -11,6 +11,7 @@ namespace BLL.Abstract
 	{
 		
 		List<Blog> GetBlogsFromCategory();
+		List<Blog> GetBlogsFromCategory(int catid);
 		List<Blog> GetAll(int id);
 		List<Blog> GetBlogByWriter(int id);
 		List<Blog> GetLast3Blogs();
