@@ -1,11 +1,4 @@
-﻿
-
-
-
-
-
-
-@using BE.concrete
+﻿@using BE.concrete
 @model List<Writer>
 
 @{
@@ -18,7 +11,7 @@
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-        
+
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
@@ -55,25 +48,54 @@
                                 <th>Durum</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach (var item in Model)
+                        <tbody id="TableBody">
+
+                            @*  @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td><img src="@item.İmage" style="border:1px solid; border-radius:50px; width:10%;" /></td>
-                                    <th>@item.id</th>
-                                    <td>@item.Name</td>
-                                    <td >@item.Mail</td>
-                                    <td >@item.Status</td>
-                                </tr>
-                            }
+                            <tr>
+                            <td><img src="@item.İmage" style="border:1px solid; border-radius:50px; width:10%;" /></td>
+                            <th>@item.id</th>
+                            <td>@item.Name</td>
+                            <td >@item.Mail</td>
+                            <td >@item.Status</td>
+                            </tr>
+
+                            } *@
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
- 
-</div>
-<script>
 
+</div>
+
+<script>
+    $(document).ready(function () {
+        function Readall(all) {
+            $.ajax({
+                url: '/Admin/Writer/Readall',
+                method: 'POST',
+                beforeSend: function (xhr) {
+                    console.log("istek gönderildi...");
+                },
+                success: function (data) {
+                    console.log(data);
+                    all(data);
+                },
+                error: function (error) {
+                    console.error("istek başarısız");
+                }
+            });
+        }
+
+        Readall(function (data) {
+            $.each(data, function (index, row) {
+                $("#TableBody").append('<tr><td><img src="' + row.İmage + '" style="border:1px solid; border-radius:50px; width:10%;" /></td><th>' + row.id + '</th><td>' + row.name + '</td><td>' + row.mail + '</td><td>' + row.status + '</td></tr>');
+            });
+        });
+    });
 </script>
+
+
+<

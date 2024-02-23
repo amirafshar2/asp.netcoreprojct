@@ -15,7 +15,7 @@ namespace asp.netcoreprojce.Areas.Admin.Controllers
             return View(Value);
         }
         [HttpPost]
-        public ActionResult Readall()
+        public IActionResult Readall()
         {
             return Json(_writerBLL.GetAll());
         }
