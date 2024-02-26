@@ -19,5 +19,17 @@ namespace asp.netcoreprojce.Areas.Admin.Controllers
         {
             return Json(_writerBLL.GetAll());
         }
+        [HttpPost]
+        public IActionResult ReadBayıd(int id)
+        {
+            var q = _writerBLL.GetAll().Where(i=>i.id==id).FirstOrDefault();
+            return Json(q);
+        }
+        public IActionResult Creat(Writer w)
+        {
+            _writerBLL.İnsert(w);
+            return Json(_writerBLL.GetAll());
+        }
+
     }
 }

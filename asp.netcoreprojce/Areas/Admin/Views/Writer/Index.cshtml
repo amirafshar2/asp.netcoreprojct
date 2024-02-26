@@ -6,8 +6,24 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <h1>Yazar Listesi</h1>
+<br />
+<div class="row">
+    <div class="col-xl-12">
+        <div class="btn-group">
+            <button id="BtnReadAll" type="button" class="btn btn-primary">Tüm Yazarlar</button>
+            <button id="BtnReadById" type="button" class="btn btn-success">Wazar İd ile getir</button>
+            <button id="BtnCreate" type="button" class="btn btn-info">Yazar Oluştur</button>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="form-control">
+        <input type="text" class="form-control" id="Writerİd" placeholder="Yzarın Id Değerini girin" />
+    </div>
+</div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
@@ -50,7 +66,7 @@
                         </thead>
                         <tbody id="TableBody">
 
-                            @*  @foreach (var item in Model)
+                            @*    @foreach (var item in Model)
                             {
                             <tr>
                             <td><img src="@item.İmage" style="border:1px solid; border-radius:50px; width:10%;" /></td>
@@ -60,7 +76,7 @@
                             <td >@item.Status</td>
                             </tr>
 
-                            } *@
+                            }  *@
                         </tbody>
                     </table>
                 </div>
@@ -89,13 +105,45 @@
             });
         }
 
-        Readall(function (data) {
-            $.each(data, function (index, row) {
-                $("#TableBody").append('<tr><td><img src="' + row.İmage + '" style="border:1px solid; border-radius:50px; width:10%;" /></td><th>' + row.id + '</th><td>' + row.name + '</td><td>' + row.mail + '</td><td>' + row.status + '</td></tr>');
+        $("#BtnReadAll").click(function () {
+            $("#TableBody").empty();
+            Readall(function (data) {
+                $.each(data, function (index, row) {
+                    $("#TableBody").append('<tr><td><img src="' + row.İmage + '" style="border:1px solid; border-radius:50px; width:10%;" /></td><th>' + row.id + '</th><td>' + row.name + '</td><td>' + row.mail + '</td><td>' + row.status + '</td></tr>');
+                });
             });
         });
+        $("#BtnReadById").click(function () {
+            var id = $("#Writerİd").val();
+            if (id === "") {
+                Swal.fire("Lütfen aradığınız id değerini girin tekrar deneyın");
+            } else {
+                $.ajax({
+                    url: '/Admin/Writer/ReadBayıd',
+                    method: 'POST',
+                    data: { id: id },
+                    beforeSend: function (xhr) {
+                        console.log("istek gönderildi...");
+                    },
+                    success: function (data) {
+                        let row = data;
+                        console.log(row);
+                        $("#TableBody").empty();
+
+                        let getvalue = '<tr><td><img src= ' + row.İmage + '  style="border:1px solid; border-radius:50px; width:10%;" /></td><th>' + row.id + ' </th><td> ' + row.name + ' </td><td> ' + row.mail + ' </td><td> ' + row.status + ' </td></tr>';
+                        $("#TableBody").html(getvalue);
+                    },
+                    error: function (error) {
+                        console.error("istek başarısız");
+                    }
+                });
+            }
+        });
+        $("#BtnCreate").click(function () {
+
+        });
+
     });
 </script>
 
 
-<
