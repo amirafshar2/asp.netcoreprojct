@@ -1,6 +1,7 @@
 ﻿using BE.concrete;
 using BLL.Concreate;
 using DAL.EntityFrameWork;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace asp.netcoreprojce.Areas.Admin.Controllers
@@ -25,10 +26,11 @@ namespace asp.netcoreprojce.Areas.Admin.Controllers
             var q = _writerBLL.GetAll().Where(i=>i.id==id).FirstOrDefault();
             return Json(q);
         }
-        public IActionResult Creat(Writer w)
+        [HttpPost]
+        public IActionResult Creat(Models.Writer w)
         {
-            _writerBLL.İnsert(w);
-            return Json(_writerBLL.GetAll());
+           
+            return View();
         }
 
     }

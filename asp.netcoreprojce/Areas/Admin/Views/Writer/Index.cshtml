@@ -85,7 +85,19 @@
     </div>
 
 </div>
+<div class="row">
+    <h1>Yeni Yazar</h1>
+    <div class="col-lg-12 form-control">
+        <div>
+            <input type="text" id="Nametxt" name="Name" placeholder="İsim & Soyisim" class="form-control m-1" />
+            <input type="text" id="Mailtxt" name="Mail" placeholder="E-mail" class="form-control m-1" />
+            <input type="text" id="Pastxt" name="Password" placeholder="Şifre" class="form-control m-1" />
+            <textarea id="Abouttxt" name="About" placeholder="Hakkında" class="form-control m-1" rows="5"></textarea>
+            <input type="file" id="Pic" name="İmage" class="form-control m-1" />
 
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
         function Readall(all) {
@@ -104,7 +116,7 @@
                 }
             });
         }
-
+       
         $("#BtnReadAll").click(function () {
             $("#TableBody").empty();
             Readall(function (data) {
@@ -140,8 +152,35 @@
             }
         });
         $("#BtnCreate").click(function () {
+            if ($("#Nametxt").val() !== "" && $("#Mailtxt").val() !== "" && $("#Pastxt").val() !== "" && $("#Abouttxt").val() !== "") {
+                let Writer = {
+                    Name: $("#Nametxt").val(),
+                    About: $("#Abouttxt").val(),
+                    Mail: $("#Mailtxt").val(),
+                    Password: $("#Pastxt").val(),
+                    Status: true,
+                    Image: $("#Pic")[0].files[0]
+                };
+                console.log(Writer);
+                let writerJSON = JSON.stringify(Writer);
+                $.ajax({
+                    url: '/Admin/Writer/Creat', // URL'yi düzeltin
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: writerJSON,
+                    success: function (func) {
+                        console.log(func);
+                    },
+                    error: function (error) {
+                        console.error("İstek başarısız");
+                    }
+                });
 
+            } else {
+                Swal.fire("Tüm bilgileri doldurduğunuzdan emin olun");
+            }
         });
+
 
     });
 </script>
