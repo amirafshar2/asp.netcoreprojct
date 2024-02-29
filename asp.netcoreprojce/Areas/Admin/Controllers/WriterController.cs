@@ -27,10 +27,10 @@ namespace asp.netcoreprojce.Areas.Admin.Controllers
             return Json(q);
         }
         [HttpPost]
-        public IActionResult Creat(Models.Writer w)
+        public IActionResult Create(Writer w)
         {
-           
-            return View();
+            _writerBLL.İnsert(w);
+            return Ok();
         }
 
     }
