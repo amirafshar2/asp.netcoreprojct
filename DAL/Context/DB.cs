@@ -1,4 +1,5 @@
 ﻿using BE.concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Context
 {
-    public class DB : DbContext, IDisposable
+    public class DB : IdentityDbContext<AppUser,AppRole,int> , IDisposable
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,6 +44,7 @@ namespace DAL.Context
 
             modelBuilder.Entity<Blog>().ToTable(tb => tb.HasTrigger("AddBlogInRatingTable"));
             modelBuilder.Entity<Comment>().ToTable(tb => tb.HasTrigger("AddScoreInComment"));
+            base.OnModelCreating(modelBuilder);
         }
         public void Dispose()
         {
