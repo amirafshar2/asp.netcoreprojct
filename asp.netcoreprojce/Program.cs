@@ -3,6 +3,8 @@
 
 
 
+using BE.concrete;
+using DAL.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -29,9 +31,11 @@ builder.Services.AddSession(options =>
                                                     // Diðer session ayarlarý da eklenebilir
 });
 // Add services to the container.
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<DB>();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<DB>();
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
