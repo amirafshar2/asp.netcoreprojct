@@ -31,7 +31,12 @@ builder.Services.AddSession(options =>
                                                     // Diðer session ayarlarý da eklenebilir
 });
 // Add services to the container.
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<DB>();
+builder.Services.AddIdentity<AppUser, AppRole>(x =>
+{
+    x.Password.RequireUppercase = false;
+    x.Password.RequireNonAlphanumeric = false;
+
+}).AddEntityFrameworkStores<DB>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DB>();
 var app = builder.Build();

@@ -32,23 +32,31 @@
             </div>
             <h3>Kayıt Ekranı</h3>
             <p>Yeni bir hesap oluşturun</p>
-            <form class="m-t" role="form" asp-action="Index">
+            <form class="m-t" role="form"  asp-action="Index">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="Name_SureName" asp-for="@Model.Name_SureName" placeholder="İsim Soyisim" required="">
+                    <span asp-validation-for="@Model.Name_SureName" class="text.danger"></span>
+                    <input type="text" class="form-control"  asp-for="@Model.Name_SureName" placeholder="İsim Soyisim" required="">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" name="Email" asp-for="@Model.Email" placeholder="Email" required="">
+                    <span asp-validation-for="@Model.Email" class="text.danger"></span>
+                    <input type="email" class="form-control"  asp-for="@Model.Email" placeholder="Email" required="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="UserName" asp-for="@Model.UserName" placeholder="Kulanıcı adı" required="">
+                    <span asp-validation-for="@Model.UserName" class="text.danger"></span>
+                    <input type="text" class="form-control"  asp-for="@Model.UserName" placeholder="Kulanıcı adı" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="Password" asp-for="@Model.Password"  placeholder="Şifre" required="">
+                    <span asp-validation-for="@Model.Password" class="text.danger"></span>
+                    <input type="password" class="form-control"  asp-for="@Model.Password"  placeholder="Şifre" required="">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" name="ConfirmPassword" asp-for="@Model.ConfirmPassword" placeholder="Şifre Tekrar" required="">
+                    <span asp-validation-for="@Model.ConfirmPassword" class="text.danger"></span>
+                    <input type="password" class="form-control"  asp-for="@Model.ConfirmPassword" placeholder="Şifre Tekrar" required="">
                 </div>
+                 <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                 </div>
 
                 <div class="form-group">
                     <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Kulanım Şartlarını Okudum , Kabul ediyorum </label></div>
@@ -79,10 +87,3 @@
 </body>
 
 </html>
-@foreach (var key in ViewData.ModelState.Keys)
-{
-    foreach (var error in ViewData.ModelState[key].Errors)
-    {
-        <div class="text-danger">@error.ErrorMessage</div>
-    }
-}

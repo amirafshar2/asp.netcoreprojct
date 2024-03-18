@@ -22,8 +22,8 @@ namespace asp.netcoreprojce.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(Models.LoginSignupModelUser U)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 AppUser user = new AppUser()
                 {
                     Email = U.Email,
@@ -42,7 +42,7 @@ namespace asp.netcoreprojce.Controllers
                         ModelState.AddModelError("", item.Description);
                     }
                 }
-            //}
+            }
             return View();
         }
     }
