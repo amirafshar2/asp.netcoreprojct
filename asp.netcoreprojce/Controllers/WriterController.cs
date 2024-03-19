@@ -1,4 +1,4 @@
-﻿using BE.concrete;
+﻿ using BE.concrete;
 using BLL.Concreate;
 using BLL.ValidationRules;
 using DAL.EntityFrameWork;
