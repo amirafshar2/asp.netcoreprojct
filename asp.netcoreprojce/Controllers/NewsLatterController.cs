@@ -15,8 +15,9 @@ namespace asp.netcoreprojce.Controllers
 		{
 			return PartialView();
 		}
-		[HttpPost]
-		[AllowAnonymous]
+
+        [AllowAnonymous]
+        [HttpPost]
 		public PartialViewResult Index(NewsLatter n)
 		{
 			n.Status = true;
