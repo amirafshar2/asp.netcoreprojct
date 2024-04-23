@@ -20,12 +20,13 @@ namespace asp.netcoreprojce.ViewComponents.Dashbaord
 
         public IViewComponentResult Invoke()
         {
-
-            var UserMail = User.Identity.Name;
-            ViewBag.veri = UserMail;
-            var User1 = bll.GetWriterBayEmail(UserMail); ;
-            var value = bll.GetWriterBayId(User1.id);
-            return View(value);
+            
+            var Name = User.Identity.Name;
+            ViewBag.veri = Name;
+            var UserMail = db.Users.Where(i => i.UserName == Name).Select(t => t.Email).FirstOrDefault();
+            var User1 = db.Users.Where(x => x.UserName == Name).ToList();
+            //var value = bll.GetWriterBayId(User1.id);
+            return View(User1);
         }
     }
 }

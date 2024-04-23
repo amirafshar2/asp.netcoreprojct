@@ -43,7 +43,7 @@ namespace asp.netcoreprojce.Controllers
                     }
                 }
             }
-            return View();
+            return View(U);
         }
     }
 }

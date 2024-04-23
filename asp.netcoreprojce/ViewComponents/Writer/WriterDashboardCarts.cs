@@ -12,6 +12,8 @@ namespace asp.netcoreprojce.ViewComponents.Writer
         CategoryManager _categorybll = new CategoryManager(new EfCategoryRepository());
         public IViewComponentResult Invoke()
         {
+            var user = User.Identity.Name;
+            ViewBag.vi= user;   
             ViewBag.bl= _Blogbll.GetAll().Count().ToString();
             ViewBag.wbl=_Blogbll.GetBlogByCategoryWithWriter(2).Count().ToString();
             ViewBag.cl = _categorybll.GetAll().Count().ToString();
