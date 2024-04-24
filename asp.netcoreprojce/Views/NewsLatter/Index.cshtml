@@ -16,7 +16,7 @@
     
     <p>Tenkoloji yazılım ve diğer bloglar </p>
     <form method="post">
-        <input type="email" placeholder="E-mail" name="Mail" id="mailtxt" required="">
+        <input type="email" placeholder="E-mail"  id="mailtxt" required="">
         <input type="submit" id="btn1" value="Abone Ol">
     </form>
  
@@ -30,7 +30,7 @@
             $.ajax({
                 url: '/NewsLatter/Index',
                 type: 'post',
-                data: { Mail: $("#mailtxt").val() },
+                data: { Mail:$("#mailtxt").val() },
                 beforpost: function (xhr) {
                     console.log("istek gönderildi");
                 },

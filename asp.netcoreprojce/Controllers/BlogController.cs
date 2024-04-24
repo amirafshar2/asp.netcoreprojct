@@ -29,7 +29,7 @@ namespace asp.netcoreprojce.Controllers
         [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
-            ViewBag.Id = id;
+            
             var value = bl.GetAll(id);
             return View(value);
         }

@@ -28,7 +28,6 @@
 
 
 @*<script>
-    
     $(document).ready(function () {
         function Comment() {
             this.UserName = "aa";
@@ -49,9 +48,7 @@
                 type: 'POST',
                 data: { UserName: c.UserName, Mail: c.Mail, Title: c.Title, Content: c.Content },
                 beforeSend: function (xhr) {
-
                     console.log('İstek gönderiliyor...');
-
                 },
                 success: function (data) {
                    console.log("Kayıt Başarılı");
@@ -61,12 +58,6 @@
                     console.log('İstek başarısız oldu: ', error);
                 }
             });
-
         });
-
     });
-
-
-
-
 </script>*@
