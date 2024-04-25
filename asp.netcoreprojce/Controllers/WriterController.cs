@@ -25,10 +25,6 @@ namespace asp.netcoreprojce.Controllers
             return PartialView();
         }
 
-        
-
-
-
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
