@@ -14,6 +14,12 @@
 ![Docker](https://img.shields.io/badge/Docker-Render-2496ED?logo=docker&logoColor=white)
 ![DSGVO](https://img.shields.io/badge/DSGVO-keine%20externen%20CDNs-1F8A5B)
 
+<a href="https://blog-87ze.onrender.com"><img src="https://img.shields.io/badge/Live--Website-blog--87ze.onrender.com-1B2A4A?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live-Website"></a>
+<a href="https://blog-87ze.onrender.com/demo/admin"><img src="https://img.shields.io/badge/Admin--Panel-Demo_starten-FFD84D?style=for-the-badge&labelColor=1B2A4A" alt="Admin-Demo"></a>
+<a href="https://blog-87ze.onrender.com/demo/writer"><img src="https://img.shields.io/badge/Autorenbereich-Demo_starten-FFD84D?style=for-the-badge&labelColor=1B2A4A" alt="Autoren-Demo"></a>
+
+**Live:** [blog-87ze.onrender.com](https://blog-87ze.onrender.com) – ohne Registrierung testen
+
 [Live-Demo](#demo) · [Funktionen](#funktionen) · [Architektur](#architektur) · [Screenshots](#screenshots) · [Lokal starten](#start)
 
 </div>
@@ -34,12 +40,17 @@ Das Projekt zeigt eine vollständige **mehrschichtige ASP.NET-Core-Anwendung**: 
 
 Die Demo funktioniert **ohne Registrierung**: ein Klick, und Sie sind angemeldet.
 
-| Zugang | Adresse | Angemeldet als |
-|---|---|---|
-| 🛠️ Admin-Panel | `/Demo/Admin` | Daniel Krüger, Chefredakteur |
-| 🖋️ Autorenbereich | `/Demo/Writer` | Lena Hoffmann, Autorin |
-| 🌐 Übersicht | `/Demo` | – |
+🔗 **https://blog-87ze.onrender.com**
 
+| Zugang | Direkt öffnen | Angemeldet als |
+|---|---|---|
+| 🛠️ Admin-Panel | [**/demo/admin**](https://blog-87ze.onrender.com/demo/admin) | Daniel Krüger, Chefredakteur |
+| 🖋️ Autorenbereich | [**/demo/writer**](https://blog-87ze.onrender.com/demo/writer) | Lena Hoffmann, Autorin |
+| 🌐 Öffentliche Website | [**Startseite**](https://blog-87ze.onrender.com) | – |
+| 🧭 Demo-Übersicht | [**/demo**](https://blog-87ze.onrender.com/demo) | – |
+
+> ⏳ Die Demo läuft im kostenlosen Render-Plan: Nach längerer Inaktivität kann der erste Aufruf bis zu einer Minute dauern.
+>
 > Alle Funktionen dürfen ausprobiert werden. Die Demo-Datenbank wird **alle 6 Stunden automatisch zurückgesetzt**.
 > Passwort, Rolle und Status der Demo-Konten sind geschützt, damit die Demo für alle Besucher erreichbar bleibt.
 
@@ -198,7 +209,7 @@ In Visual Studio: `CoreBlog.sln` öffnen und das Projekt **CoreBlog** starten.
 
 1. Bei [Render](https://render.com) **New → Blueprint** wählen und dieses Repository verbinden
 2. Region *Frankfurt* und Plan *Free* werden aus `render.yaml` übernommen
-3. Nach dem Build ist die Demo unter `https://<name>.onrender.com/Demo` erreichbar
+3. Nach dem Build ist die Demo unter `https://<name>.onrender.com/Demo` erreichbar – live unter [blog-87ze.onrender.com](https://blog-87ze.onrender.com)
 
 Im Container wird die Demo-Datenbank bei jedem Start und danach alle 6 Stunden neu aufgebaut.
 
